@@ -2,13 +2,8 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Course Project">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="{{asset('styles/bootstrap4/bootstrap.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{asset('plugins/fontawesome-free-5.0.1/css/fontawesome-all.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{asset('styles/courses_styles.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{asset('styles/courses_responsive.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('styles/courses_styles.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('styles/courses_responsive.css') }}">
 {% endblock %}
 
 {% block title %}Cours {{ controller_name }}!{% endblock %}
@@ -208,4 +203,8 @@
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/courses_custom.js') }}"></script>
 {% endblock %}
