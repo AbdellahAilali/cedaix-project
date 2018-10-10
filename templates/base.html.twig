@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Course Project">
@@ -12,28 +14,25 @@
     <link rel="stylesheet" type="text/css" href="{{asset('plugins/OwlCarousel2-2.2.1/animate.css') }}">
     <link rel="stylesheet" type="text/css" href="{{asset('styles/main_styles.css') }}">
     <link rel="stylesheet" type="text/css" href="{{asset('styles/responsive.css') }}">
-    <title>{% block title %}Welcome!{% endblock %}</title>
-    {% block stylesheets %}{% endblock %}
+    {% endblock %}
 </head>
 <body>
 
     <header class="header d-flex flex-row">
         <div class="header_content d-flex flex-row align-items-center">
-            <!-- Logo -->
             <div class="logo_container">
                 <div class="logo">
-                    <img src="images/logo.png" alt="">
-                    <span>course</span>
+                    <img src="{{ asset('images/logo.png') }}" alt="">
+                    <span>CED'AIX</span>
                 </div>
             </div>
 
-            <!-- Main Navigation -->
             <nav class="main_nav_container">
                 <div class="main_nav">
                     <ul class="main_nav_list">
-                        <li class="main_nav_item"><a href="#">home</a></li>
-                        <li class="main_nav_item"><a href="#">about us</a></li>
-                        <li class="main_nav_item"><a href="courses.html">courses</a></li>
+                        <li class="main_nav_item"><a href="{{ asset('home') }}"">Accueil</a></li>
+                        <li class="main_nav_item"><a href="#">À propos de nous</a></li>
+                        <li class="main_nav_item"><a href="{{ asset('cours') }}">Cours</a></li>
                         <li class="main_nav_item"><a href="elements.html">elements</a></li>
                         <li class="main_nav_item"><a href="news.html">news</a></li>
                         <li class="main_nav_item"><a href="contact.html">contact</a></li>
@@ -45,21 +44,14 @@
             <img src="images/phone-call.svg" alt="">
             <span>+43 4566 7788 2457</span>
         </div>
-
-        <!-- Hamburger -->
         <div class="hamburger_container">
             <i class="fas fa-bars trans_200"></i>
         </div>
-
     </header>
 
 {% block body %}{% endblock %}
-{% block javascripts %}{% endblock %}
     <footer class="footer">
         <div class="container">
-
-            <!-- Newsletter -->
-
             <div class="newsletter">
                 <div class="row">
                     <div class="col">
@@ -68,7 +60,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="row">
                     <div class="col text-center">
                         <div class="newsletter_form_container mx-auto">
@@ -81,46 +72,29 @@
                         </div>
                     </div>
                 </div>
-
             </div>
-
-            <!-- Footer Content -->
-
             <div class="footer_content">
                 <div class="row">
-
-                    <!-- Footer Column - About -->
                     <div class="col-lg-3 footer_col">
-
-                        <!-- Logo -->
                         <div class="logo_container">
                             <div class="logo">
                                 <img src="images/logo.png" alt="">
-                                <span>course</span>
+                                <span>cours</span>
                             </div>
                         </div>
-
-                        <p class="footer_about_text">In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum, tempor lacus.</p>
-
                     </div>
-
-                    <!-- Footer Column - Menu -->
-
                     <div class="col-lg-3 footer_col">
                         <div class="footer_column_title">Menu</div>
                         <div class="footer_column_content">
                             <ul>
-                                <li class="footer_list_item"><a href="#">Home</a></li>
-                                <li class="footer_list_item"><a href="#">About Us</a></li>
-                                <li class="footer_list_item"><a href="courses.html">Courses</a></li>
+                                <li class="footer_list_item"><a href="#">Accueil</a></li>
+                                <li class="footer_list_item"><a href="#">À propos de nous</a></li>
+                                <li class="footer_list_item"><a href="{{ asset('cours') }}">Cours</a></li>
                                 <li class="footer_list_item"><a href="news.html">News</a></li>
                                 <li class="footer_list_item"><a href="contact.html">Contact</a></li>
                             </ul>
                         </div>
                     </div>
-
-                    <!-- Footer Column - Usefull Links -->
-
                     <div class="col-lg-3 footer_col">
                         <div class="footer_column_title">Usefull Links</div>
                         <div class="footer_column_content">
@@ -133,9 +107,6 @@
                             </ul>
                         </div>
                     </div>
-
-                    <!-- Footer Column - Contact -->
-
                     <div class="col-lg-3 footer_col">
                         <div class="footer_column_title">Contact</div>
                         <div class="footer_column_content">
@@ -163,9 +134,6 @@
 
                 </div>
             </div>
-
-            <!-- Footer Copyright -->
-
             <div class="footer_bar d-flex flex-column flex-sm-row align-items-center">
                 <div class="footer_copyright">
 					<span><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
@@ -185,7 +153,7 @@
 
         </div>
     </footer>
-
+    {% block javascripts %}
     <script src="{{asset('js/jquery-3.2.1.min.js') }}"></script>
     <script src="{{asset('styles/bootstrap4/popper.js') }}"></script>
     <script src="{{asset('styles/bootstrap4/bootstrap.min.js') }}"></script>
@@ -198,5 +166,6 @@
     <script src="{{asset('plugins/scrollTo/jquery.scrollTo.min.js') }}"></script>
     <script src="{{asset('plugins/easing/easing.js') }}"></script>
     <script src="{{asset('js/custom.js') }}"></script>
+    {% endblock %}
 </body>
 </html>
