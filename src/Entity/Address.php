@@ -44,7 +44,7 @@ class Address
     private $country;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Parents", mappedBy="address")
+     * @ORM\OneToMany(targetEntity="Parents", mappedBy="address")
      */
     private $parents;
 

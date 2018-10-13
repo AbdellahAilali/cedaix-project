@@ -44,6 +44,18 @@ class SchoolBoy
      */
     private $classes;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Parents")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $father;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Parents")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $mother;
+
     public function __construct()
     {
         $this->registrations = new ArrayCollection();
@@ -129,6 +141,30 @@ class SchoolBoy
     public function setClasses(?Classes $classes): self
     {
         $this->classes = $classes;
+
+        return $this;
+    }
+
+    public function getFather(): ?Parents
+    {
+        return $this->father;
+    }
+
+    public function setFather(?Parents $father): self
+    {
+        $this->father = $father;
+
+        return $this;
+    }
+
+    public function getMother(): ?Parents
+    {
+        return $this->mother;
+    }
+
+    public function setMother(?Parents $mother): self
+    {
+        $this->mother = $mother;
 
         return $this;
     }

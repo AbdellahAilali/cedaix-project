@@ -27,7 +27,7 @@ class Registration
     /**
      * @ORM\Column(type="date")
      */
-    private $registrationDate;
+    private $createdAt;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Matter", inversedBy="registrations")
@@ -56,14 +56,14 @@ class Registration
         return $this;
     }
 
-    public function getRegistrationDate(): ?\DateTimeInterface
+    public function getCreatedAt(): ?\DateTimeInterface
     {
-        return $this->registrationDate;
+        return $this->createdAt;
     }
 
-    public function setRegistrationDate(\DateTimeInterface $registrationDate): self
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $this->registrationDate = $registrationDate;
+        $this->createdAt = $createdAt;
 
         return $this;
     }
