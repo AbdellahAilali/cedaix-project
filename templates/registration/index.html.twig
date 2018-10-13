@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello{% endblock %}
+
+{% block body %}
+    <div class="super_container">
+        {% include 'home/slide.html.twig' %}
+
+        <div class="row">
+            <div id="registration_lastname" class="col">
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+                {{ form_end(form) }}
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
