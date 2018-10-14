@@ -18,6 +18,7 @@ class RegistrationType extends AbstractType
     {
         $builder
             ->add('schoolBoy', SchoolBoyType::class, [
+                'label' => 'Informations sur l\'élève'
 
             ])
             ->add("mattter", MatterType::class, [
@@ -25,13 +26,14 @@ class RegistrationType extends AbstractType
                     new NotBlank(['message' => 'The field "fistname" should be not blank.'])
                 ]
             ])
-            ;
+           ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
             'data_class' => Registration::class,
+            'attr'=>array('novalidate'=>'novalidate')
         ));
     }
 }

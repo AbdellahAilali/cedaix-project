@@ -17,27 +17,24 @@ class AddressType extends AbstractType
             ->add('address1', TextType::class, [
                 'constraints' => [
                     new NotBlank(['message'=>'The field "address1" should be not blank.'])
-                ]
+                ],
+                'label' => 'Adresse 1'
             ])
             ->add('address2',TextType::class,[
-
+                'label' => 'Adresse 2'
             ])
             ->add('postalCode',TextType::class, [
                 'constraints' => [
                     new NotBlank(['message' => 'The field "postalCode" should be not blank.'])
-                ]
+                ],
+                'label' => 'Code Postale'
             ])
             ->add('city',TextType::class, [
                 'constraints'=> [
                     new NotBlank(['message'=> 'The field "city" should be not blank.'])
-                ]
-            ])
-            ->add('country', TextType::class, [
-                'constraints'=> [
-                    new NotBlank(['message'=>'The field "country" should be not blank.'])
-                ]
-            ])
-        ;
+                ],
+                'label' => 'Ville'
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

@@ -34,6 +34,11 @@ class SchoolBoy
     private $dateOfBirth;
 
     /**
+     * @ORM\Column(type="string", length=28)
+     */
+    private $birthplace;
+
+    /**
      * @ORM\OneToMany(targetEntity="App\Entity\Registration", mappedBy="schoolBoy")
      */
     private $registrations;
@@ -165,6 +170,18 @@ class SchoolBoy
     public function setMother(?Parents $mother): self
     {
         $this->mother = $mother;
+
+        return $this;
+    }
+
+    public function getBirthplace(): ?string
+    {
+        return $this->birthplace;
+    }
+
+    public function setBirthplace(string $birthplace): self
+    {
+        $this->birthplace = $birthplace;
 
         return $this;
     }

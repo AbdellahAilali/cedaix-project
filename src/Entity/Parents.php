@@ -24,7 +24,12 @@ class Parents
     /**
      * @ORM\Column(type="string", length=28)
      */
-    private $firstname;
+    private $phone;
+
+    /**
+     * @ORM\Column(type="string", length=56)
+     */
+    private $email;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Address", inversedBy="parents")
@@ -50,14 +55,14 @@ class Parents
         return $this;
     }
 
-    public function getFirstname(): ?string
+    public function getPhone(): ?string
     {
-        return $this->firstname;
+        return $this->phone;
     }
 
-    public function setFirstname(string $firstname): self
+    public function setPhone(string $phone): self
     {
-        $this->firstname = $firstname;
+        $this->phone = $phone;
 
         return $this;
     }
@@ -70,6 +75,18 @@ class Parents
     public function setAddress(?Address $address): self
     {
         $this->address = $address;
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
 
         return $this;
     }
