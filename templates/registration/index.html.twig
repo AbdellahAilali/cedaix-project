@@ -9,30 +9,40 @@
         </div>
 
         <div class="form-group">
+            {{ form_start(form) }}
+
             <div class="row">
                 <div class="col">
-                    {{ form_start(form) }}
-                    {{ form_row(form) }}
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                    {{ form_end(form) }}
+                    {{ form_row(form.schoolBoy.lastName) }}
                 </div>
             </div>
+            <div class="row">
+                <div class="col">
+                    {{ form_row(form.schoolBoy.firstName) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    {{ form_row(form.schoolBoy.dateOfBirth) }}
+                </div>
+                <div class="col">
+                    {{ form_row(form.schoolBoy.birthplace) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    {{ form_row(form.schoolBoy.classes) }}
+                </div>
+            </div><div class="row">
+                <div class="col">
+                    {{ form_row(form.schoolBoy.firstName) }}
+                </div>
+            </div>
+
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+            {{ form_end(form) }}
         </div>
-
-
     </div>
 
-    {#<form>
-        <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-        </div>
-        <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-        </div>
-
-
-    </form>
-#}
 {% endblock %}

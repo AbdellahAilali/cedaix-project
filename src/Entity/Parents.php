@@ -19,7 +19,12 @@ class Parents
     /**
      * @ORM\Column(type="string", length=28)
      */
-    private $lastname;
+    private $lastName;
+
+    /**
+     * @ORM\Column(type="string", length=28)
+     */
+    private $firstName;
 
     /**
      * @ORM\Column(type="string", length=28)
@@ -43,14 +48,26 @@ class Parents
         return $this->id;
     }
 
-    public function getLastname(): ?string
+    public function getLastName(): ?string
     {
-        return $this->lastname;
+        return $this->lastName;
     }
 
-    public function setLastname(string $lastname): self
+    public function setLastName(string $lastName): self
     {
-        $this->lastname = $lastname;
+        $this->lastName = $lastName;
+
+        return $this;
+    }
+
+    public function getFirstName(): ?string
+    {
+        return $this->firstName;
+    }
+
+    public function setFirstName(string $firstName): self
+    {
+        $this->firstName = $firstName;
 
         return $this;
     }

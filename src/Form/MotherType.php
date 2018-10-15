@@ -2,30 +2,12 @@
 
 namespace App\Form;
 
-
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Validator\Constraints\NotBlank;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class MotherType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function getParent()
     {
-        $builder
-            ->add('lastname', TextType::class, [
-                'constraints' => [
-                    new NotBlank(['message' => 'The field "lastname" should be not blank.'])
-                ],
-                'label' => 'Nom du mère (tutrice)'
-            ])
-            ->add('phone', TextType::class, [
-                'constraints' => [
-                    new NotBlank(['message' => 'The field "phone" should be not blank.'])
-                ],
-                'label' => 'téléphone'
-            ]);
-
+        return ParentsType::class;
     }
-
 }

@@ -13,23 +13,11 @@ class FatherType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('lastname', TextType::class, [
-                'constraints' => [
-                    new NotBlank(['message' => 'The field "lastname" should be not blank.'])
-                ],
-                'label' => 'Nom du père (tuteur)'
-            ])
-            ->add('phone', TextType::class, [
-                'constraints' => [
-                    new NotBlank(['message' => 'The field "phone" should be not blank.'])
-                ],
-                'label' => 'téléphone'
-            ])
             ->add('email', TextType::class, [
                 'constraints' => [
                     new NotBlank(['message'=> 'The field "email" should be not blank.'])
                 ],
-                'label' => 'Adresse Mail'
+                'label' => 'Mail address'
             ])
             ->add('address', AddressType::class, [
                 'constraints' => [
@@ -38,4 +26,8 @@ class FatherType extends AbstractType
             ]);
     }
 
+    public function getParent()
+    {
+        return ParentsType::class;
+    }
 }

@@ -155,7 +155,7 @@ class SchoolBoy
         return $this->father;
     }
 
-    public function setFather(?Parents $father): self
+    public function setFather($father): self
     {
         $this->father = $father;
 
@@ -167,7 +167,7 @@ class SchoolBoy
         return $this->mother;
     }
 
-    public function setMother(?Parents $mother): self
+    public function setMother($mother): self
     {
         $this->mother = $mother;
 

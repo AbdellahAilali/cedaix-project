@@ -2,8 +2,10 @@
 
 namespace App\Form;
 
+use App\Entity\Classes;
 use App\Entity\Parents;
 use App\Entity\SchoolBoy;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\AbstractType;
@@ -17,14 +19,14 @@ class SchoolBoyType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('lastname', TextType::class, [
+            ->add('lastName', TextType::class, [
                 'constraints' => [
                     new NotBlank(['message' => 'The field "lastname" should be not blank.'])
                 ],
                 'label' => 'Nom de Famille',
                 'attr' => ['class' => 'form-control'],
             ])
-            ->add('firstname', TextType::class, [
+            ->add('firstName', TextType::class, [
                 'constraints' => [
                     new NotBlank(['message' => 'The field "firstname" should be not blank.']),
                 ],
@@ -45,7 +47,9 @@ class SchoolBoyType extends AbstractType
                 'label' => 'Lieu de naissance',
                 'attr' => ['class' => 'form-control'],
             ])
-            ->add('classes', ClassesType::class, [
+            ->add('classes', EntityType::class, [
+                'class' => Classes::class,
+                'choice_label' => 'name',
                 'constraints' => [
                     new NotBlank(['message' => 'The field "classes" should be not blank.']),
                 ],

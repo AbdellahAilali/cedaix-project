@@ -2,7 +2,9 @@
 
 namespace App\Form;
 
+use App\Entity\Matter;
 use App\Entity\Registration;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -18,12 +20,13 @@ class RegistrationType extends AbstractType
     {
         $builder
             ->add('schoolBoy', SchoolBoyType::class, [
-                'label' => 'Informations sur l\'élève'
-
             ])
-            ->add("mattter", MatterType::class, [
+            ->add("matter", EntityType::class, [
+                'class' => Matter::class,
+                'choice_label' => 'name',
+                'multiple' => true,
                 'constraints' => [
-                    new NotBlank(['message' => 'The field "fistname" should be not blank.'])
+                    new NotBlank(['message' => 'The field "matter" should be not blank.'])
                 ]
             ])
            ;

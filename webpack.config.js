@@ -45,5 +45,16 @@ Encore
 
 ;
 
-module.exports = Encore.getWebpackConfig();
+var config = Encore.getWebpackConfig();
+
+config.resolve.alias = {
+    'animation.gsap': 'scrollmagic/scrollmagic/minified/plugins/animation.gsap.min.js',
+    'TimelineMax': 'gsap/src/minified/TimelineMax.min.js',
+    'TweenLite': 'gsap/src/minified/TweenLite.min.js',
+    'TimelineLite': 'gsap/src/minified/TimelineLite.min.js',
+    'TweenMax': 'gsap/src/minified/TweenMax.min.js',
+    'ScrollMagic': 'scrollmagic/scrollmagic/minified/ScrollMagic.min.js'
+};
+
+module.exports = config;
 
