@@ -2,13 +2,16 @@
 
 {% block title %}Hello{% endblock %}
 
+
 {% block body %}
-    <div class="super_container">
+    <div class="super_container" style="background-color: #1a1a1a">
         <div id="background-regist">
+{#
             {% include 'registration/background.html.twig' %}
+#}
         </div>
 
-        <div class="form-group">
+        <div class="form-group" style="width: 36%; margin: auto">
             {{ form_start(form) }}
 
             <div class="row">
@@ -23,7 +26,8 @@
             </div>
             <div class="row">
                 <div class="col">
-                    {{ form_row(form.schoolBoy.dateOfBirth) }}
+                    {{ form_label(form.schoolBoy.dateOfBirth,'Date de naissance',{'label_attr': {'class': 'col-2 col-form-label'}}) }}
+                    {{ form_widget(form.schoolBoy.dateOfBirth) }}
                 </div>
                 <div class="col">
                     {{ form_row(form.schoolBoy.birthplace) }}
@@ -33,9 +37,38 @@
                 <div class="col">
                     {{ form_row(form.schoolBoy.classes) }}
                 </div>
-            </div><div class="row">
                 <div class="col">
-                    {{ form_row(form.schoolBoy.firstName) }}
+                    {{ form_row(form.matter) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    {{ form_row(form.schoolBoy.father.lastName) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    {{ form_row(form.schoolBoy.father.firstName) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    {{ form_row(form.schoolBoy.father.phone) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    {{ form_row(form.schoolBoy.mother) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    {{ form_row(form.schoolBoy.father.email) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    {{ form_row(form.schoolBoy.father.address) }}
                 </div>
             </div>
 

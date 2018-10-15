@@ -15,14 +15,15 @@ class FatherType extends AbstractType
         $builder
             ->add('email', TextType::class, [
                 'constraints' => [
-                    new NotBlank(['message'=> 'The field "email" should be not blank.'])
+                    new NotBlank(['message' => 'The field should be not blank.'])
                 ],
-                'label' => 'Mail address'
+                'label' => 'Mail address',
+                'attr' => ['class' => 'form-control'],
             ])
             ->add('address', AddressType::class, [
                 'constraints' => [
-                    new NotBlank(['message'=> 'The field "email" should be not blank.'])
-                ]
+                    new NotBlank(['message' => 'The field should be not blank.'])
+                ],
             ]);
     }
 

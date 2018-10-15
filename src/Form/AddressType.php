@@ -16,24 +16,28 @@ class AddressType extends AbstractType
         $builder
             ->add('address1', TextType::class, [
                 'constraints' => [
-                    new NotBlank(['message'=>'The field "address1" should be not blank.'])
+                    new NotBlank(['message'=>'The field should be not blank.'])
                 ],
-                'label' => 'Adresse 1'
+                'label' => 'Adresse 1',
+                'attr' => ['class' => 'form-control'],
             ])
             ->add('address2',TextType::class,[
-                'label' => 'Adresse 2'
+                'label' => 'Adresse 2',
+                'attr' => ['class' => 'form-control'],
             ])
             ->add('postalCode',TextType::class, [
                 'constraints' => [
-                    new NotBlank(['message' => 'The field "postalCode" should be not blank.'])
+                    new NotBlank(['message' => 'The field should be not blank.'])
                 ],
-                'label' => 'Code Postale'
+                'label' => 'Code Postale',
+                'attr' => ['class' => 'form-control'],
             ])
             ->add('city',TextType::class, [
                 'constraints'=> [
-                    new NotBlank(['message'=> 'The field "city" should be not blank.'])
+                    new NotBlank(['message'=> 'The field should be not blank.'])
                 ],
-                'label' => 'Ville'
+                'label' => 'Ville',
+                'attr' => ['class' => 'form-control'],
             ]);
     }
 

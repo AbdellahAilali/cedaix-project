@@ -26,7 +26,7 @@ class RegistrationType extends AbstractType
                 'choice_label' => 'name',
                 'multiple' => true,
                 'constraints' => [
-                    new NotBlank(['message' => 'The field "matter" should be not blank.'])
+                    new NotBlank(['message' => 'The field should be not blank.'])
                 ]
             ])
            ;

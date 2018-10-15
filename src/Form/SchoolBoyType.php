@@ -21,28 +21,27 @@ class SchoolBoyType extends AbstractType
         $builder
             ->add('lastName', TextType::class, [
                 'constraints' => [
-                    new NotBlank(['message' => 'The field "lastname" should be not blank.'])
+                    new NotBlank(['message' => 'The field should be not blank.'])
                 ],
                 'label' => 'Nom de Famille',
                 'attr' => ['class' => 'form-control'],
             ])
             ->add('firstName', TextType::class, [
                 'constraints' => [
-                    new NotBlank(['message' => 'The field "firstname" should be not blank.']),
+                    new NotBlank(['message' => 'The field should be not blank.']),
                 ],
-                'label' => 'Prénom',
+                'label' => 'firstname',
                 'attr' => ['class' => 'form-control'],
             ])
             ->add('dateOfBirth', DateType::class, [
                 'constraints' => [
-                    new NotBlank(['message' => 'The field "dateOfBirth" should be not blank.']),
+                    new NotBlank(['message' => 'The field should be not blank.']),
                 ],
                 'label' => 'Date de naissance',
-                'attr' => ['class' => 'form-control'],
             ])
             ->add('birthplace', TextType::class, [
                 'constraints' => [
-                    new NotBlank(['message' => 'The field "birthplace" should be not blank.']),
+                    new NotBlank(['message' => 'The field should be not blank.']),
                 ],
                 'label' => 'Lieu de naissance',
                 'attr' => ['class' => 'form-control'],
@@ -51,13 +50,12 @@ class SchoolBoyType extends AbstractType
                 'class' => Classes::class,
                 'choice_label' => 'name',
                 'constraints' => [
-                    new NotBlank(['message' => 'The field "classes" should be not blank.']),
+                    new NotBlank(['message' => 'The field should be not blank.']),
                 ],
                 'label' => 'Classe/Niveau'
             ])
             ->add('father', FatherType::class, [
-                'label' => 'Informations sur les parents'
-
+                'label' => 'Informations sur les parents',
             ])
             ->add('mother', MotherType::class);
     }
