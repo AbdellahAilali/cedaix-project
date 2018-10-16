@@ -18,20 +18,20 @@ class ParentsType extends AbstractType
                 'constraints' => [
                     new NotBlank(['message' => 'The field should be not blank.'])
                 ],
-                'attr' => ['class' => 'form-control'],
+                'attr' => ['class' => 'form-control input_field'],
 
             ])
             ->add('firstName', TextType::class, [
                 'constraints' => [
                     new NotBlank(['message' => 'The field should be not blank.'])
                 ],
-                'attr' => ['class' => 'form-control'],
+                'attr' => ['class' => 'form-control input_field'],
             ])
             ->add('phone', TextType::class, [
                 'constraints' => [
                     new NotBlank(['message' => 'The field should be not blank.'])
                 ],
-                'attr' => ['class' => 'form-control'],
+                'attr' => ['class' => 'form-control input_field'],
             ])
         ;
     }

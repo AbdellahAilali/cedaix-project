@@ -37,7 +37,7 @@ class Parents
     private $email;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Address", inversedBy="parents")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Address", inversedBy="parents", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $address;

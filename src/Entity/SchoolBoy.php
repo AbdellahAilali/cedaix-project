@@ -50,13 +50,13 @@ class SchoolBoy
     private $classes;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Parents")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Parents", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $father;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Parents")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Parents", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $mother;

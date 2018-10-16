@@ -18,7 +18,7 @@ class FatherType extends AbstractType
                     new NotBlank(['message' => 'The field should be not blank.'])
                 ],
                 'label' => 'Mail address',
-                'attr' => ['class' => 'form-control'],
+                'attr' => ['class' => 'form-control input_field'],
             ])
             ->add('address', AddressType::class, [
                 'constraints' => [

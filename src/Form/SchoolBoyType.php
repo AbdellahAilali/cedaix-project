@@ -10,6 +10,8 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -24,14 +26,14 @@ class SchoolBoyType extends AbstractType
                     new NotBlank(['message' => 'The field should be not blank.'])
                 ],
                 'label' => 'Nom de Famille',
-                'attr' => ['class' => 'form-control'],
+                'attr' => ['class' => ' input_field form-control'],
             ])
             ->add('firstName', TextType::class, [
                 'constraints' => [
                     new NotBlank(['message' => 'The field should be not blank.']),
                 ],
                 'label' => 'firstname',
-                'attr' => ['class' => 'form-control'],
+                'attr' => ['class' => 'form-control input_field'],
             ])
             ->add('dateOfBirth', DateType::class, [
                 'constraints' => [
@@ -44,7 +46,7 @@ class SchoolBoyType extends AbstractType
                     new NotBlank(['message' => 'The field should be not blank.']),
                 ],
                 'label' => 'Lieu de naissance',
-                'attr' => ['class' => 'form-control'],
+                'attr' => ['class' => 'form-control input_field'],
             ])
             ->add('classes', EntityType::class, [
                 'class' => Classes::class,
@@ -57,7 +59,9 @@ class SchoolBoyType extends AbstractType
             ->add('father', FatherType::class, [
                 'label' => 'Informations sur les parents',
             ])
-            ->add('mother', MotherType::class);
+            ->add('mother', MotherType::class)
+            ->addEventListener(FormEvents::POST_SUBMIT, [$this, 'onPostSubmit'])
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
@@ -65,5 +69,13 @@ class SchoolBoyType extends AbstractType
         $resolver->setDefaults(array(
             'data_class' => SchoolBoy::class,
         ));
+    }
+
+    public function onPostSubmit(FormEvent $event)
+    {
+        /** @var SchoolBoy $schoolBoy */
+        $schoolBoy = $event->getData();
+        $schoolBoy->getMother()->setAddress($schoolBoy->getFather()->getAddress());
+        $schoolBoy->getMother()->setEmail($schoolBoy->getFather()->getEmail());
     }
 }

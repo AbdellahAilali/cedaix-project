@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
  * @ORM\Entity(repositoryClass="App\Repository\RegistrationRepository")
  */
@@ -19,13 +20,14 @@ class Registration
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\SchoolBoy", inversedBy="registrations")
+     * @ORM\ManyToOne(targetEntity="App\Entity\SchoolBoy", inversedBy="registrations", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $schoolBoy;
 
     /**
      * @ORM\Column(type="date")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $createdAt;
 
@@ -37,6 +39,7 @@ class Registration
     public function __construct()
     {
         $this->matter = new ArrayCollection();
+        $this->createdAt = new \DateTime();
     }
 
     public function getId(): ?int

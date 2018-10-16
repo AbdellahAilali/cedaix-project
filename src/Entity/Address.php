@@ -51,6 +51,7 @@ class Address
     public function __construct()
     {
         $this->parents = new ArrayCollection();
+        $this->country = 'France';
     }
 
     public function getId(): ?int

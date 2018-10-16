@@ -19,25 +19,25 @@ class AddressType extends AbstractType
                     new NotBlank(['message'=>'The field should be not blank.'])
                 ],
                 'label' => 'Adresse 1',
-                'attr' => ['class' => 'form-control'],
+                'attr' => ['class' => 'form-control input_field'],
             ])
             ->add('address2',TextType::class,[
                 'label' => 'Adresse 2',
-                'attr' => ['class' => 'form-control'],
+                'attr' => ['class' => 'form-control input_field'],
             ])
             ->add('postalCode',TextType::class, [
                 'constraints' => [
                     new NotBlank(['message' => 'The field should be not blank.'])
                 ],
                 'label' => 'Code Postale',
-                'attr' => ['class' => 'form-control'],
+                'attr' => ['class' => 'form-control input_field'],
             ])
             ->add('city',TextType::class, [
                 'constraints'=> [
                     new NotBlank(['message'=> 'The field should be not blank.'])
                 ],
                 'label' => 'Ville',
-                'attr' => ['class' => 'form-control'],
+                'attr' => ['class' => 'form-control input_field'],
             ]);
     }
 
