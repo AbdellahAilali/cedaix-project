@@ -3,16 +3,14 @@
 namespace App\Form;
 
 use App\Entity\Classes;
-use App\Entity\Parents;
 use App\Entity\SchoolBoy;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
-use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 
@@ -22,46 +20,32 @@ class SchoolBoyType extends AbstractType
     {
         $builder
             ->add('lastName', TextType::class, [
-                'constraints' => [
-                    new NotBlank(['message' => 'The field should be not blank.'])
-                ],
-                'label' => 'Nom de Famille',
-                'attr' => ['class' => ' input_field form-control'],
+                'attr' => ['class' => ' input_field form-control',
+                    'placeholder ' => 'Nom de famille'],
             ])
             ->add('firstName', TextType::class, [
-                'constraints' => [
-                    new NotBlank(['message' => 'The field should be not blank.']),
-                ],
-                'label' => 'firstname',
-                'attr' => ['class' => 'form-control input_field'],
+                'attr' => ['class' => 'form-control input_field',
+                    'placeholder ' => 'Prénom'],
             ])
-            ->add('dateOfBirth', DateType::class, [
-                'constraints' => [
-                    new NotBlank(['message' => 'The field should be not blank.']),
-                ],
+            ->add('birthDate', DateType::class, [
+                'attr' => ['class' => 'form-control', 'id' => 'date_regist'],
+                'widget' => 'single_text',
                 'label' => 'Date de naissance',
             ])
             ->add('birthplace', TextType::class, [
-                'constraints' => [
-                    new NotBlank(['message' => 'The field should be not blank.']),
-                ],
-                'label' => 'Lieu de naissance',
-                'attr' => ['class' => 'form-control input_field'],
+                'attr' => ['class' => 'form-control input_field ',
+                    'placeholder ' => 'Lieu de naissance'],
             ])
             ->add('classes', EntityType::class, [
                 'class' => Classes::class,
                 'choice_label' => 'name',
-                'constraints' => [
-                    new NotBlank(['message' => 'The field should be not blank.']),
-                ],
-                'label' => 'Classe/Niveau'
+                'attr' => ['id' => 'inputGroupSelect01'],
             ])
             ->add('father', FatherType::class, [
                 'label' => 'Informations sur les parents',
             ])
             ->add('mother', MotherType::class)
-            ->addEventListener(FormEvents::POST_SUBMIT, [$this, 'onPostSubmit'])
-        ;
+            ->addEventListener(FormEvents::POST_SUBMIT, [$this, 'onPostSubmit']);
     }
 
     public function configureOptions(OptionsResolver $resolver)
@@ -75,7 +59,13 @@ class SchoolBoyType extends AbstractType
     {
         /** @var SchoolBoy $schoolBoy */
         $schoolBoy = $event->getData();
-        $schoolBoy->getMother()->setAddress($schoolBoy->getFather()->getAddress());
-        $schoolBoy->getMother()->setEmail($schoolBoy->getFather()->getEmail());
+
+        if ($schoolBoy->getFather()->getAddress()) {
+            $schoolBoy->getMother()->setAddress($schoolBoy->getFather()->getAddress());
+        }
+
+        if ($schoolBoy->getFather()->getEmail()) {
+            $schoolBoy->getMother()->setEmail($schoolBoy->getFather()->getEmail());
+        }
     }
 }

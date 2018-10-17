@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\SchoolBoyRepository")
@@ -20,21 +21,25 @@ class SchoolBoy
 
     /**
      * @ORM\Column(type="string", length=28)
+     * @Assert\NotBlank()
      */
-    private $lastname;
+    private $lastName;
 
     /**
      * @ORM\Column(type="string", length=28)
+     * @Assert\NotBlank()
      */
-    private $firstname;
+    private $firstName;
 
     /**
      * @ORM\Column(type="date")
+     * @Assert\NotBlank()
      */
-    private $dateOfBirth;
+    private $birthDate;
 
     /**
      * @ORM\Column(type="string", length=28)
+     * @Assert\NotBlank()
      */
     private $birthplace;
 
@@ -50,12 +55,16 @@ class SchoolBoy
     private $classes;
 
     /**
+     * @Assert\Valid()
+     *
      * @ORM\ManyToOne(targetEntity="App\Entity\Parents", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $father;
 
     /**
+     * @Assert\Valid()
+     *
      * @ORM\ManyToOne(targetEntity="App\Entity\Parents", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
@@ -71,38 +80,38 @@ class SchoolBoy
         return $this->id;
     }
 
-    public function getLastname(): ?string
+    public function getLastName(): ?string
     {
-        return $this->lastname;
+        return $this->lastName;
     }
 
-    public function setLastname(string $lastname): self
+    public function setLastName(string $lastName): self
     {
-        $this->lastname = $lastname;
+        $this->lastName = $lastName;
 
         return $this;
     }
 
-    public function getFirstname(): ?string
+    public function getFirstName(): ?string
     {
-        return $this->firstname;
+        return $this->firstName;
     }
 
-    public function setFirstname(string $firstname): self
+    public function setFirstName(string $firstName): self
     {
-        $this->firstname = $firstname;
+        $this->firstName = $firstName;
 
         return $this;
     }
 
-    public function getDateOfBirth(): ?\DateTimeInterface
+    public function getBirthDate(): ?\DateTimeInterface
     {
-        return $this->dateOfBirth;
+        return $this->birthDate;
     }
 
-    public function setDateOfBirth(\DateTimeInterface $dateOfBirth): self
+    public function setBirthDate(?\DateTimeInterface $birthDate): self
     {
-        $this->dateOfBirth = $dateOfBirth;
+        $this->birthDate = $birthDate;
 
         return $this;
     }

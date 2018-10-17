@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ParentsRepository")
@@ -18,25 +19,31 @@ class Parents
 
     /**
      * @ORM\Column(type="string", length=28)
+     * @Assert\NotBlank()
      */
     private $lastName;
 
     /**
      * @ORM\Column(type="string", length=28)
+     * @Assert\NotBlank()
      */
     private $firstName;
 
     /**
      * @ORM\Column(type="string", length=28)
+     * @Assert\NotBlank()
      */
     private $phone;
 
     /**
      * @ORM\Column(type="string", length=56)
+     * @Assert\NotBlank()
      */
     private $email;
 
     /**
+     * @Assert\Valid()
+     *
      * @ORM\ManyToOne(targetEntity="App\Entity\Address", inversedBy="parents", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */

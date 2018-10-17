@@ -1,9 +1,10 @@
-
-    {
+{
     "devDependencies": {
         "@symfony/webpack-encore": "^0.20.0",
         "gsap": "^2.0.2",
+        "node-sass": "^4.9.4",
         "popper": "^1.0.1",
+        "sass-loader": "^7.1.0",
         "scrollmagic": "^2.0.6",
         "webpack-notifier": "^1.6.0"
     },

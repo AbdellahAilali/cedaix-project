@@ -35,7 +35,7 @@ Encore
     .enableVersioning(Encore.isProduction())
 
     // enables Sass/SCSS support
-    //.enableSassLoader()
+    .enableSassLoader()
 
     // uncomment if you use TypeScript
     //.enableTypeScriptLoader()
@@ -55,6 +55,14 @@ config.resolve.alias = {
     'TweenMax': 'gsap/src/minified/TweenMax.min.js',
     'ScrollMagic': 'scrollmagic/scrollmagic/minified/ScrollMagic.min.js'
 };
+
+// config.module = {rules: [
+//         {
+//             test: /\.css$/,
+//             use: ['style-loader', 'css-loader']
+//         }
+//     ]
+// };
 
 module.exports = config;
 

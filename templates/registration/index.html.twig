@@ -3,12 +3,19 @@
 {% block title %}Hello{% endblock %}
 
 {% block stylesheets %}
-{{ parent() }}
-<link rel="stylesheet" type="text/css" href="{{ asset('styles/contact_styles.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('styles/contact_responsive.css') }}">
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset('styles/contact_styles.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('styles/contact_responsive.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('styles/registration.css') }}">
 {% endblock %}
 
+
+
 {% block body %}
+    /**
+    BOUTTON RADIO MATIERE
+    */
+
     <div class="super_container" style="background-color: #1a1a1a">
         <div id="background-regist">
             {# {% include 'registration/background.html.twig' %}#}
@@ -17,66 +24,112 @@
         <div class="form-group" style="width: 36%; margin: auto">
             {{ form_start(form) }}
 
-            <div class="row" style="display: flex">
+            <div class="row">
                 <div class="col">
-                    {{ form_row(form.schoolBoy.lastName) }}
+                    {{ form_widget(form.schoolBoy.lastName) }}
+                    <span class="error">{{ form_errors(form.schoolBoy.lastName) }}</span>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    {{ form_row(form.schoolBoy.firstName) }}
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    {{ form_label(form.schoolBoy.dateOfBirth) }}
-                    {{ form_widget(form.schoolBoy.dateOfBirth) }}
-                </div>
-                <div class="col">
-                    {{ form_row(form.schoolBoy.birthplace) }}
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    {{ form_row(form.schoolBoy.classes) }}
-                </div>
-                <div class="col">
-                    {{ form_row(form.matter) }}
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    {{ form_row(form.schoolBoy.father.lastName) }}
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    {{ form_row(form.schoolBoy.father.firstName) }}
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    {{ form_row(form.schoolBoy.father.phone) }}
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    {{ form_row(form.schoolBoy.mother) }}
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    {{ form_row(form.schoolBoy.father.email) }}
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    {{ form_row(form.schoolBoy.father.address) }}
+                    {{ form_widget(form.schoolBoy.firstName) }}
+                    <span class="error">{{ form_errors(form.schoolBoy.firstName) }}</span>
                 </div>
             </div>
 
+            <div class="row">
+                <div class="col">
+                    {{ form_label(form.schoolBoy.birthDate) }}
+                    {{ form_widget(form.schoolBoy.birthDate) }}
+                </div>
+                <div class="col">
+                    {{ form_widget(form.schoolBoy.birthplace) }}
+                </div>
+            </div>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    {{ form_label(form.schoolBoy.classes, null, {
+                        'label': 'Classe/Niveau',
+                        'label_attr': {'id': 'input-group-text'}
+                    }) }}
+                </div>
+                {{ form_widget(form.schoolBoy.classes, {'attr': {'class': 'custom-select'}}) }}
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    {{ form_label(form.schoolBoy.classes) }}
+                </div>
+                {# <div class="col">
+                     {{ form_widget(form.matter) }}
+                     {{ form_label(form.matter) }}
+                 </div>#}
+            </div>
+            <div class="row">
+                <div class="col">
+                    {{ form_widget(form.schoolBoy.father.lastName,{ 'attr': {'placeholder': "Nom du père (tuteur)"} }) }}
+                    <span class="error">{{ form_errors(form.schoolBoy.father.lastName) }}</span>
+                </div>
+                <div class="col">
+                    {{ form_widget(form.schoolBoy.father.firstName,{ 'attr': {'placeholder': "Prénom du père (tuteur)"} }) }}
+                    <span class="error">{{ form_errors(form.schoolBoy.father.firstName) }}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    {{ form_widget(form.schoolBoy.father.phone) }}
+                    <span class="error">{{ form_errors(form.schoolBoy.father.phone) }}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    {{ form_widget(form.schoolBoy.mother.lastName) }}
+                    <span class="error">{{ form_errors(form.schoolBoy.mother.lastName) }}</span>
+                </div>
+                <div class="col">
+                    {{ form_widget(form.schoolBoy.mother.firstName) }}
+                    <span class="error">{{ form_errors(form.schoolBoy.mother.firstName) }}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    {{ form_widget(form.schoolBoy.mother.phone) }}
+                    <span class="error">{{ form_errors(form.schoolBoy.mother.phone) }}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    {{ form_widget(form.schoolBoy.father.email) }}
+                    <span class="error">{{ form_errors(form.schoolBoy.father.email) }}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    {{ form_widget(form.schoolBoy.father.address.address1) }}
+                    <span class="error">{{ form_errors(form.schoolBoy.father.address.address1) }}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    {{ form_widget(form.schoolBoy.father.address.address2) }}
+                    <span class="error">{{ form_errors(form.schoolBoy.father.address.address2) }}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    {{ form_widget(form.schoolBoy.father.address.postalCode) }}
+                    <span class="error">{{ form_errors(form.schoolBoy.father.address.postalCode) }}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    {{ form_widget(form.schoolBoy.father.address.city) }}
+                    <span class="error">{{ form_errors(form.schoolBoy.father.address.city) }}</span>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg btn-block">S'inscrire</button>
             {{ form_end(form) }}
         </div>
     </div>

@@ -1,0 +1,33 @@
+.form-group {
+    width: 36%;
+    margin: auto;
+}
+
+.col input:last-of-type {
+    margin-bottom: 24px;
+}
+
+button.btn.btn-primary.btn-lg.btn-block {
+    color: #fffff;
+    background-color: #ffb606;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    cursor: pointer;
+    border: none;
+}
+
+
+.date_regist label.required {
+    margin-left: 16px;
+}
+
+input#registration_schoolBoy_birthplace {
+    position: relative;
+    top: 28px;
+}
+
+select#registration_schoolBoy_classes {
+    width: 35.5%;
+}
