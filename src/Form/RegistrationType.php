@@ -6,7 +6,6 @@ use App\Entity\Matter;
 use App\Entity\Registration;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -23,8 +22,10 @@ class RegistrationType extends AbstractType
 
             ->add("matter", EntityType::class, [
                 'class' => Matter::class,
-                'choice_label' => 'name',
                 'multiple' => true,
+                'expanded' => true,
+                'attr' => ['id' =>  'customCheck1'],
+                'choice_label' => 'name',
             ])
            ;
     }

@@ -21,16 +21,17 @@ class SchoolBoyType extends AbstractType
         $builder
             ->add('lastName', TextType::class, [
                 'attr' => ['class' => ' input_field form-control',
-                    'placeholder ' => 'Nom de famille'],
+                ]
+
             ])
             ->add('firstName', TextType::class, [
                 'attr' => ['class' => 'form-control input_field',
-                    'placeholder ' => 'Prénom'],
+                    'placeholder ' => 'firstName'],
             ])
             ->add('birthDate', DateType::class, [
                 'attr' => ['class' => 'form-control', 'id' => 'date_regist'],
                 'widget' => 'single_text',
-                'label' => 'Date de naissance',
+                'label' => 'birthDay'
             ])
             ->add('birthplace', TextType::class, [
                 'attr' => ['class' => 'form-control input_field ',

@@ -33,6 +33,7 @@ class RegistrationController extends AbstractController
      */
     public function index(Request $request)
     {
+        $request->setLocale('fr');
         $form = $this->createForm(RegistrationType::class, new Registration());
 
         $form->handleRequest($request);

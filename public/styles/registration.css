@@ -18,7 +18,6 @@ button.btn.btn-primary.btn-lg.btn-block {
     border: none;
 }
 
-
 .date_regist label.required {
     margin-left: 16px;
 }
@@ -30,4 +29,38 @@ input#registration_schoolBoy_birthplace {
 
 select#registration_schoolBoy_classes {
     width: 35.5%;
+}
+
+.matter_regist label {
+    margin-right: 8px;
+}
+
+.matter_regist input {
+    margin-right: 4px;
+}
+
+.classes_label_regist label#input-group-text {
+    margin-right: 13px;
+}
+
+#info_schoolBoy_regist {
+    margin-top: 20px;
+}
+
+h2 {
+    text-align: center;
+    margin-top: 10px;
+}
+
+button {
+    margin-bottom: 25px;
+}
+
+.classes_regist {
+    width: 282%;
+    display: block;
+}
+
+input#registration_schoolBoy_birthDate, select#registration_schoolBoy_classes{
+    background-color: #f8f3f4;
 }
