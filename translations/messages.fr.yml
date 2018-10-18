@@ -1,6 +1,16 @@
-
-symfony is great : j'aime symfony
-
 lastName : Nom de famille
-
 firstName : Prénom
+birthDay : Date de Naissance
+birthplace : Lieu de naissance
+classes : Classe/Niveau
+matter : Matière
+lastName of the father : Nom du père (tuteur)
+firstName of the father : prénom du père (tuteur)
+lastName of the mother : Nom de la mère (tutrice)
+firstName of the mother : prénom de la mère (tutrice)
+email : Adresse mail
+phone : téléphone
+address1: Adresse 1
+address2: Adresse 2
+posteCode : Code postale
+city : Ville

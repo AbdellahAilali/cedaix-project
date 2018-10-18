@@ -21,24 +21,28 @@ class SchoolBoy
 
     /**
      * @ORM\Column(type="string", length=28)
+     *
      * @Assert\NotBlank()
      */
     private $lastName;
 
     /**
      * @ORM\Column(type="string", length=28)
+     *
      * @Assert\NotBlank()
      */
     private $firstName;
 
     /**
      * @ORM\Column(type="date")
+     *
      * @Assert\NotBlank()
      */
     private $birthDate;
 
     /**
      * @ORM\Column(type="string", length=28)
+     *
      * @Assert\NotBlank()
      */
     private $birthplace;

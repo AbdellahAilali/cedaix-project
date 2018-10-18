@@ -14,8 +14,7 @@ class FatherType extends AbstractType
     {
         $builder
             ->add('email', TextType::class, [
-                'attr' => ['class' => 'form-control input_field',
-                    'placeholder ' => 'Adresse mail'],
+                'attr' => ['class' => 'form-control input_field'],
             ])
             ->add('address', AddressType::class);
     }

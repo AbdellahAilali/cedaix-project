@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello{% endblock %}
+{% block title %}Inscription{% endblock %}
 
 {% block stylesheets %}
     {{ parent() }}
@@ -10,17 +10,11 @@
 {% endblock %}
 
 
-
 {% block body %}
     <div class="super_container">
         <div id="background-regist">
             {% include 'registration/background.html.twig' %}
         </div>
-
-        <p>{{ 'symfony is great' | trans }}  </p>
-        <p>{% trans %}symfony is great{% endtrans %}</p>
-
-
         <div class="form-group">
             {{ form_start(form) }}
 
@@ -33,18 +27,18 @@
             </div>
             <div class="row">
                 <div class="col">
-                    {{ form_widget(form.schoolBoy.firstName) }}
+                    {{ form_widget(form.schoolBoy.firstName,{ 'attr': {'placeholder': "firstName"} }) }}
                     <span class="error">{{ form_errors(form.schoolBoy.firstName) }}</span>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col">
-                    {{ form_label(form.schoolBoy.birthDate) }}
+                    {{ form_label(form.schoolBoy.birthDate, null, {'label': 'birthDay'}) }}
                     {{ form_widget(form.schoolBoy.birthDate) }}
                 </div>
                 <div class="col">
-                    {{ form_widget(form.schoolBoy.birthplace) }}
+                    {{ form_widget(form.schoolBoy.birthplace,{ 'attr': {'placeholder': "birthplace"} }) }}
                 </div>
             </div>
 
@@ -53,7 +47,7 @@
                     <div class="input-group mb-3 ">
                         <div class="input-group-prepend classes_label_regist">
                             {{ form_label(form.schoolBoy.classes, null, {
-                                'label': 'Classe/Niveau',
+                                'label': 'classes',
                                 'label_attr': {'id': 'input-group-text'}
                             }) }}
                         </div>
@@ -61,7 +55,7 @@
                     </div>
                 </div>
                 <div class="col matter_regist">
-                    {{ form_label(form.matter,null, {'label':'Matter'}) }}
+                    {{ form_label(form.matter,null, {'label':'matter'}) }}
                     <div class="matter_input_regist">
                         {{ form_widget(form.matter) }}
                     </div>
@@ -71,63 +65,63 @@
             <h2>Informations sur les parents</h2>
             <div class="row">
                 <div class="col">
-                    {{ form_widget(form.schoolBoy.father.lastName,{ 'attr': {'placeholder': "Name of the father"} }) }}
+                    {{ form_widget(form.schoolBoy.father.lastName,{ 'attr': {'placeholder': "lastName of the father"} }) }}
                     <span class="error">{{ form_errors(form.schoolBoy.father.lastName) }}</span>
                 </div>
                 <div class="col">
-                    {{ form_widget(form.schoolBoy.father.firstName,{ 'attr': {'placeholder': "Prénom du père (tuteur)"} }) }}
+                    {{ form_widget(form.schoolBoy.father.firstName,{ 'attr': {'placeholder': "firstName of the father"} }) }}
                     <span class="error">{{ form_errors(form.schoolBoy.father.firstName) }}</span>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    {{ form_widget(form.schoolBoy.father.phone) }}
+                    {{ form_widget(form.schoolBoy.father.phone,{ 'attr': {'placeholder': "phone"} }) }}
                     <span class="error">{{ form_errors(form.schoolBoy.father.phone) }}</span>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    {{ form_widget(form.schoolBoy.mother.lastName,{ 'attr': {'placeholder': "Nom de la mère (tutrice)"} }) }}
+                    {{ form_widget(form.schoolBoy.mother.lastName,{ 'attr': {'placeholder': "lastName of the mother"} }) }}
                     <span class="error">{{ form_errors(form.schoolBoy.mother.lastName) }}</span>
                 </div>
                 <div class="col">
-                    {{ form_widget(form.schoolBoy.mother.firstName,{ 'attr': {'placeholder': "Prénom de la mère (tutrice)"} }) }}
+                    {{ form_widget(form.schoolBoy.mother.firstName,{ 'attr': {'placeholder': "firstName of the mother"} }) }}
                     <span class="error">{{ form_errors(form.schoolBoy.mother.firstName) }}</span>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    {{ form_widget(form.schoolBoy.mother.phone) }}
+                    {{ form_widget(form.schoolBoy.mother.phone,{ 'attr': {'placeholder': "phone"} }) }}
                     <span class="error">{{ form_errors(form.schoolBoy.mother.phone) }}</span>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    {{ form_widget(form.schoolBoy.father.email) }}
+                    {{ form_widget(form.schoolBoy.father.email,{ 'attr': {'placeholder': "email"} }) }}
                     <span class="error">{{ form_errors(form.schoolBoy.father.email) }}</span>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    {{ form_widget(form.schoolBoy.father.address.address1) }}
+                    {{ form_widget(form.schoolBoy.father.address.address1,{ 'attr': {'placeholder': "address1"} }) }}
                     <span class="error">{{ form_errors(form.schoolBoy.father.address.address1) }}</span>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    {{ form_widget(form.schoolBoy.father.address.address2) }}
+                    {{ form_widget(form.schoolBoy.father.address.address2,{ 'attr': {'placeholder': "address 2"} }) }}
                     <span class="error">{{ form_errors(form.schoolBoy.father.address.address2) }}</span>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    {{ form_widget(form.schoolBoy.father.address.postalCode) }}
+                    {{ form_widget(form.schoolBoy.father.address.postalCode,{ 'attr': {'placeholder': "posteCode"} }) }}
                     <span class="error">{{ form_errors(form.schoolBoy.father.address.postalCode) }}</span>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    {{ form_widget(form.schoolBoy.father.address.city) }}
+                    {{ form_widget(form.schoolBoy.father.address.city,{ 'attr': {'placeholder': "city"} }) }}
                     <span class="error">{{ form_errors(form.schoolBoy.father.address.city) }}</span>
                 </div>
             </div>

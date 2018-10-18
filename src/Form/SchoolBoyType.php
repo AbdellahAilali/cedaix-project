@@ -25,8 +25,7 @@ class SchoolBoyType extends AbstractType
 
             ])
             ->add('firstName', TextType::class, [
-                'attr' => ['class' => 'form-control input_field',
-                    'placeholder ' => 'firstName'],
+                'attr' => ['class' => 'form-control input_field']
             ])
             ->add('birthDate', DateType::class, [
                 'attr' => ['class' => 'form-control', 'id' => 'date_regist'],
@@ -34,8 +33,7 @@ class SchoolBoyType extends AbstractType
                 'label' => 'birthDay'
             ])
             ->add('birthplace', TextType::class, [
-                'attr' => ['class' => 'form-control input_field ',
-                    'placeholder ' => 'Lieu de naissance'],
+                'attr' => ['class' => 'form-control input_field ']
             ])
             ->add('classes', EntityType::class, [
                 'class' => Classes::class,

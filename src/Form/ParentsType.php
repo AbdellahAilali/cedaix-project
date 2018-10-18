@@ -21,8 +21,7 @@ class ParentsType extends AbstractType
                 'attr' => ['class' => 'form-control input_field'],
             ])
             ->add('phone', TextType::class, [
-                'attr' => ['class' => 'form-control input_field',
-                     'placeholder' => 'Télélphone'],
+                'attr' => ['class' => 'form-control input_field'],
             ]);
     }
 
