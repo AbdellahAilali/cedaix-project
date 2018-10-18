@@ -1,13 +1,38 @@
 security:
+    encoders:
+        App\Entity\User:
+            algorithm: argon2i
+
+
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
-        in_memory: { memory: ~ }
+        in_memory:
+             memory:
+                users:
+                    ryan:
+                       password: ryanpass
+                       roles: 'ROLE_USER'
+                    admin:
+                       password: kitten
+                       roles: 'ROLE_ADMIN'
+
+        # used to reload user from session & other features (e.g. switch_user)
+        #app_user_provider:
+            #entity:
+                #class: App\Entity\User
+                #property: login
+        # used to reload user from session & other features (e.g. switch_user)
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
-            anonymous: true
+            anonymous: ~
+            http_basic:
+                realm: Secured Area
+            guard:
+                authenticators:
+                    - App\Security\LoginFormAuthenticator
 
             # activate different ways to authenticate
 
@@ -20,5 +45,5 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+         - { path: ^/admin, roles: ROLE_ADMIN }
+         - { path: ^/profile, roles: ROLE_USER }

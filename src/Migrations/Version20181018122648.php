@@ -8,7 +8,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20181014210005 extends AbstractMigration
+final class Version20181018122648 extends AbstractMigration
 {
     public function up(Schema $schema) : void
     {
@@ -19,7 +19,7 @@ final class Version20181014210005 extends AbstractMigration
         $this->addSql('CREATE TABLE parents (id INT AUTO_INCREMENT NOT NULL, address_id INT NOT NULL, last_name VARCHAR(28) NOT NULL, first_name VARCHAR(28) NOT NULL, phone VARCHAR(28) NOT NULL, email VARCHAR(56) NOT NULL, INDEX IDX_FD501D6AF5B7AF75 (address_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE matter (id INT AUTO_INCREMENT NOT NULL, name VARCHAR(28) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE classes (id INT AUTO_INCREMENT NOT NULL, name VARCHAR(28) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
-        $this->addSql('CREATE TABLE school_boy (id INT AUTO_INCREMENT NOT NULL, classes_id INT NOT NULL, father_id INT NOT NULL, mother_id INT NOT NULL, lastname VARCHAR(28) NOT NULL, firstname VARCHAR(28) NOT NULL, date_of_birth DATE NOT NULL, birthplace VARCHAR(28) NOT NULL, INDEX IDX_530BF5079E225B24 (classes_id), INDEX IDX_530BF5072055B9A2 (father_id), INDEX IDX_530BF507B78A354D (mother_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE school_boy (id INT AUTO_INCREMENT NOT NULL, classes_id INT NOT NULL, father_id INT NOT NULL, mother_id INT NOT NULL, last_name VARCHAR(28) NOT NULL, first_name VARCHAR(28) NOT NULL, birth_date DATE NOT NULL, birthplace VARCHAR(28) NOT NULL, INDEX IDX_530BF5079E225B24 (classes_id), INDEX IDX_530BF5072055B9A2 (father_id), INDEX IDX_530BF507B78A354D (mother_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE registration (id INT AUTO_INCREMENT NOT NULL, school_boy_id INT NOT NULL, created_at DATE NOT NULL, INDEX IDX_62A8A7A79D171F96 (school_boy_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE registration_matter (registration_id INT NOT NULL, matter_id INT NOT NULL, INDEX IDX_1E805B85833D8F43 (registration_id), INDEX IDX_1E805B85D614E59F (matter_id), PRIMARY KEY(registration_id, matter_id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
         $this->addSql('ALTER TABLE parents ADD CONSTRAINT FK_FD501D6AF5B7AF75 FOREIGN KEY (address_id) REFERENCES address (id)');

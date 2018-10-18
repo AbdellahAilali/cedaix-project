@@ -14,3 +14,6 @@ address1: Adresse 1
 address2: Adresse 2
 posteCode : Code postale
 city : Ville
+
+Invalid credentials. : Le mot de passe que vous avez entré était invalide!
+Please sign in : Veuillez vous connecter
