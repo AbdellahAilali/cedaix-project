@@ -1,0 +1,30 @@
+<header class="header d-flex flex-row">
+    <div class="header_content d-flex flex-row align-items-center">
+        <div class="logo_container">
+            <div class="logo">
+                <img src="{{ asset('images/logo.png') }}" alt="">
+                <span>CED'AIX</span>
+            </div>
+        </div>
+
+        <nav class="main_nav_container">
+            <div class="main_nav">
+                <ul class="main_nav_list">
+                    <li class="main_nav_item"><a href="{{ asset('/') }}">Accueil</a></li>
+                    <li class="main_nav_item"><a href="#">À propos de nous</a></li>
+                    <li class="main_nav_item"><a href="{{ asset('cours') }}">Cours</a></li>
+                    <li class="main_nav_item"><a href="{{ asset('registration') }}">Inscription</a></li>
+                    <li class="main_nav_item"><a href="#">news</a></li>
+                    <li class="main_nav_item"><a href="{{ asset('contact') }}">contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div class="header_side d-flex flex-row justify-content-center align-items-center">
+        <img src="{{ asset('images/phone-call.svg') }}" alt="">
+        <span>+43 4566 7788 2457</span>
+    </div>
+    <div class="hamburger_container">
+        <i class="fas fa-bars trans_200"></i>
+    </div>
+</header>

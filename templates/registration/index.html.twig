@@ -1,0 +1,134 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset('styles/contact_styles.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('styles/contact_responsive.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('styles/registration.css') }}">
+{% endblock %}
+
+
+{% block body %}
+    <div class="super_container">
+        <div id="background-regist">
+            {% include 'registration/background.html.twig' %}
+        </div>
+        <div class="form-group">
+            {{ form_start(form) }}
+
+            <div class="row">
+                <div class="col">
+                    <h2 id="info_schoolBoy_regist">Information sur l'élève</h2>
+                    {{ form_widget(form.schoolBoy.lastName,{ 'attr': {'placeholder': "lastName"} }) }}
+                    <span class="error">{{ form_errors(form.schoolBoy.lastName) }}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    {{ form_widget(form.schoolBoy.firstName,{ 'attr': {'placeholder': "firstName"} }) }}
+                    <span class="error">{{ form_errors(form.schoolBoy.firstName) }}</span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    {{ form_label(form.schoolBoy.birthDate, null, {'label': 'birthDay'}) }}
+                    {{ form_widget(form.schoolBoy.birthDate) }}
+                </div>
+                <div class="col">
+                    {{ form_widget(form.schoolBoy.birthplace,{ 'attr': {'placeholder': "birthplace"} }) }}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <div class="input-group mb-3 ">
+                        <div class="input-group-prepend classes_label_regist">
+                            {{ form_label(form.schoolBoy.classes, null, {
+                                'label': 'classes',
+                                'label_attr': {'id': 'input-group-text'}
+                            }) }}
+                        </div>
+                        {{ form_widget(form.schoolBoy.classes, {'attr': {'class': 'custom-select'}}) }}
+                    </div>
+                </div>
+                <div class="col matter_regist">
+                    {{ form_label(form.matter,null, {'label':'matter'}) }}
+                    <div class="matter_input_regist">
+                        {{ form_widget(form.matter) }}
+                    </div>
+                </div>
+            </div>
+
+            <h2>Informations sur les parents</h2>
+            <div class="row">
+                <div class="col">
+                    {{ form_widget(form.schoolBoy.father.lastName,{ 'attr': {'placeholder': "lastName of the father"} }) }}
+                    <span class="error">{{ form_errors(form.schoolBoy.father.lastName) }}</span>
+                </div>
+                <div class="col">
+                    {{ form_widget(form.schoolBoy.father.firstName,{ 'attr': {'placeholder': "firstName of the father"} }) }}
+                    <span class="error">{{ form_errors(form.schoolBoy.father.firstName) }}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    {{ form_widget(form.schoolBoy.father.phone,{ 'attr': {'placeholder': "phone"} }) }}
+                    <span class="error">{{ form_errors(form.schoolBoy.father.phone) }}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    {{ form_widget(form.schoolBoy.mother.lastName,{ 'attr': {'placeholder': "lastName of the mother"} }) }}
+                    <span class="error">{{ form_errors(form.schoolBoy.mother.lastName) }}</span>
+                </div>
+                <div class="col">
+                    {{ form_widget(form.schoolBoy.mother.firstName,{ 'attr': {'placeholder': "firstName of the mother"} }) }}
+                    <span class="error">{{ form_errors(form.schoolBoy.mother.firstName) }}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    {{ form_widget(form.schoolBoy.mother.phone,{ 'attr': {'placeholder': "phone"} }) }}
+                    <span class="error">{{ form_errors(form.schoolBoy.mother.phone) }}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    {{ form_widget(form.schoolBoy.father.email,{ 'attr': {'placeholder': "email"} }) }}
+                    <span class="error">{{ form_errors(form.schoolBoy.father.email) }}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    {{ form_widget(form.schoolBoy.father.address.address1,{ 'attr': {'placeholder': "address1"} }) }}
+                    <span class="error">{{ form_errors(form.schoolBoy.father.address.address1) }}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    {{ form_widget(form.schoolBoy.father.address.address2,{ 'attr': {'placeholder': "address 2"} }) }}
+                    <span class="error">{{ form_errors(form.schoolBoy.father.address.address2) }}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    {{ form_widget(form.schoolBoy.father.address.postalCode,{ 'attr': {'placeholder': "posteCode"} }) }}
+                    <span class="error">{{ form_errors(form.schoolBoy.father.address.postalCode) }}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    {{ form_widget(form.schoolBoy.father.address.city,{ 'attr': {'placeholder': "city"} }) }}
+                    <span class="error">{{ form_errors(form.schoolBoy.father.address.city) }}</span>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg btn-block">S'inscrire</button>
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+{% endblock %}
