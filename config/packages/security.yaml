@@ -6,21 +6,10 @@ security:
 
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
-        in_memory:
-             memory:
-                users:
-                    ryan:
-                       password: ryanpass
-                       roles: 'ROLE_USER'
-                    admin:
-                       password: kitten
-                       roles: 'ROLE_ADMIN'
-
-        # used to reload user from session & other features (e.g. switch_user)
-        #app_user_provider:
-            #entity:
-                #class: App\Entity\User
-                #property: login
+        doctrine:
+            entity:
+                class: App\Entity\User
+                property: login
         # used to reload user from session & other features (e.g. switch_user)
     firewalls:
         dev:
@@ -28,8 +17,6 @@ security:
             security: false
         main:
             anonymous: ~
-            http_basic:
-                realm: Secured Area
             guard:
                 authenticators:
                     - App\Security\LoginFormAuthenticator
