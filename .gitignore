@@ -26,3 +26,4 @@ yarn-error.log
 assets/
 .idea
 node_modules/
+.idea/workspace.xml
