@@ -117,13 +117,13 @@ p a:hover::after
 }
 ::selection
 {
-	background: #FFD266;
-	color: #C88E00;
+	background: #1e4468;
+	color: #1e4468;
 }
 p::selection
 {
-	background: #FFD266;
-	color: #C88E00;
+	background: #1e4468;
+	color: #1e4468;
 }
 h1{font-size: 36px;}
 h2{font-size: 22px;}
@@ -373,7 +373,7 @@ section
 }
 .main_nav_item a:hover
 {
-	color: #ffb606;
+	color: #1e4468;
 }
 
 /*********************************
@@ -384,7 +384,7 @@ section
 {
 	width: 279px;
 	height: 100%;
-	background: #ffb606;
+	background: #1e4468;
 }
 .header_side img
 {
@@ -426,7 +426,7 @@ section
 }
 .hamburger_container:hover i
 {
-	color: #ffb606;
+	color: #1e4468;
 }
 
 /*********************************
@@ -504,7 +504,7 @@ section
 }
 .menu_item a:hover
 {
-	color: #ffb606;
+	color: #1e4468;
 }
 .menu_close_container
 {
@@ -551,7 +551,7 @@ section
 .menu_close_container:hover .menu_close,
 .menu_close_container:hover .menu_close::after
 {
-	background: #ffb606;
+	background: #1e4468;
 }
 
 /*********************************
@@ -585,7 +585,7 @@ section
 }
 .menu_social_item a i:hover
 {
-	color: #ffb606;
+	color: #1e4468;
 }
 .menu_container.active .menu_social_container
 {
@@ -662,7 +662,7 @@ section
 	-ms-transform: translateX(-50%);
 	-o-transform: translateX(-50%);
 	transform: translateX(-50%);
-	background: #ffb606;
+	background: #1e4468;
 	padding-top: 24px;
 	padding-bottom: 18px;
 	padding-left: 39px;
@@ -716,7 +716,7 @@ section
 	width: 55px;
 	height: 4px;
 	content: '';
-	background: #ffb606;
+	background: #1e4468;
 }
 
 /*********************************
@@ -835,7 +835,7 @@ section
 {
 	width: 67px;
 	height: 67px;
-	background: #ffb606;
+	background: #1e4468;
 	margin-left: auto;
 }
 .course_price span
@@ -886,14 +886,14 @@ section
 }
 .newsletter_email:focus
 {
-	outline: solid 2px #ffb606;
+	outline: solid 2px #1e4468;
 }
 .newsletter_submit_btn
 {
 	width: 164px;
 	height: 42px;
 	border: none;
-	background: #ffb606;
+	background: #1e4468;
 	color: #FFFFFF;
 	font-size: 14px;
 	font-weight: 500;
@@ -955,7 +955,7 @@ section
 }
 .footer_list_item a:hover
 {
-	color: #ffb606;
+	color: #1e4468;
 }
 .footer_contact_item
 {
@@ -996,7 +996,7 @@ section
 }
 .footer_social .menu_social_item a i:hover
 {
-	color: #ffb606;
+	color: #1e4468;
 }
 .footer_social .menu_social_item:last-child
 {
