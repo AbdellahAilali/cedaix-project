@@ -2,3 +2,13 @@ img#logo{
     height: 104px;
     width: 115px;
 }
+
+.nopadding .register_section{
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+img#home_img_cours {
+    height: 100%;
+    width: 100%;
+}

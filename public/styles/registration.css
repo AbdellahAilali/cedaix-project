@@ -8,9 +8,8 @@
 }
 
 button.btn.btn-primary.btn-lg.btn-block {
-    color: #ffff;
-    background-color: #1e4468;
-    font-size: 14px;
+    background-color: #2064a5;
+    font-size: 23px;
     font-weight: 700;
     text-transform: uppercase;
     color: #FFFFFF;
@@ -51,14 +50,16 @@ h2 {
     text-align: center;
     margin-top: 10px;
     color: white;
-    background-color: #1e4468;
-    font-size: 30px;
+    background-color: #2064a5;
+    font-size: 26px;
     margin-bottom: 27px;
+    padding: 5px;
+    /* border-radius: 0 55% 0% 55%;*/
 }
 
-h2#info_schoolBoy_regist{
+h2#info_schoolBoy_regist {
     position: relative;
-    top:2px;
+    top: 2px;
 }
 
 button {
@@ -72,7 +73,7 @@ button {
 
 input#registration_schoolBoy_birthDate, select#registration_schoolBoy_classes {
     background-color: white;
-    height:48px;
+    height: 48px;
 }
 
 div#img_form {
@@ -88,6 +89,13 @@ div#img_form {
     /* margin: auto; */
 }
 
-label{
+label {
     color: black;
+    font-size: 15px;
+    letter-spacing: 1px;
+}
+
+.form-control::placeholder {
+    color: #000000;
+    opacity: 1
 }

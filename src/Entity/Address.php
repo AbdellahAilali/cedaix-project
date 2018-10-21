@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Ramsey\Uuid\UuidInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\AddressRepository")
@@ -13,9 +14,11 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Address
 {
     /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
+     * The internal primary identity key.
+     *
+     * @var UuidInterface|null
+     *
+     * @ORM\Column(type="uuid", unique=true)
      */
     private $id;
 
