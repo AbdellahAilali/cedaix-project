@@ -19,22 +19,26 @@ class RegistrationType extends AbstractType
     {
         $builder
             ->add('schoolBoy', SchoolBoyType::class)
-
             ->add("matter", EntityType::class, [
                 'class' => Matter::class,
                 'multiple' => true,
                 'expanded' => true,
-                'attr' => ['id' =>  'customCheck1'],
-                'choice_label' => 'name',
-            ])
-           ;
+                /*'attr' => ['id' => 'customCheck1'],*/
+                /*'choice_attr' => function ($choiceValue, $key, $value) {
+                    return ['value'=>$value];
+                },*/
+                'choice_label' => function (Matter $matter) {
+                    return $matter->getName() . ' ' . $matter->getPrice();
+                }
+
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
             'data_class' => Registration::class,
-            'attr'=>array('novalidate'=>'novalidate')
+            'attr' => array('novalidate' => 'novalidate')
         ));
     }
 }

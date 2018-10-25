@@ -31,6 +31,13 @@ class Matter
      */
     private $registrations;
 
+    /**
+     * @ORM\Column(type="integer")
+     *
+     * @Assert\NotBlank()
+     */
+    private $price;
+
     public function __construct()
     {
         $this->registrations = new ArrayCollection();
@@ -77,6 +84,18 @@ class Matter
             $this->registrations->removeElement($registration);
             $registration->removeMatter($this);
         }
+
+        return $this;
+    }
+
+    public function getPrice(): ?int
+    {
+        return $this->price;
+    }
+
+    public function setPrice(int $price): self
+    {
+        $this->price = $price;
 
         return $this;
     }
