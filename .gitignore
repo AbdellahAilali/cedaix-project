@@ -23,7 +23,6 @@ npm-debug.log
 yarn-error.log
 ###< symfony/webpack-encore-pack ###
 
-assets/
 .idea
 node_modules/
 /.idea/workspace.xml
