@@ -14,11 +14,9 @@ use Ramsey\Uuid\UuidInterface;
 class Address
 {
     /**
-     * The internal primary identity key.
-     *
-     * @var UuidInterface|null
-     *
-     * @ORM\Column(type="uuid", unique=true)
+     * @ORM\Id()
+     * @ORM\GeneratedValue()
+     * @ORM\Column(type="integer")
      */
     private $id;
 
