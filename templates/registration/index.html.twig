@@ -22,113 +22,123 @@
             <div class="form-group">
                 {{ form_start(form) }}
 
-                <div class="row">
-                    <div class="col">
-                        <h2 id="info_schoolBoy_regist">Information sur l'élève</h2>
-                        {{ form_widget(form.schoolBoy.lastName,{ 'attr': {'placeholder': "lastName"} }) }}
-                        <span class="error">{{ form_errors(form.schoolBoy.lastName) }}</span>
+                {% for schoolBoy in form.schoolBoys %}
+                    <div class="row">
+                        <div class="col">
+                            <h2 id="info_schoolBoy_regist">Information sur l'élève</h2>
+                            {{ form_widget(schoolBoy.lastName,{ 'attr': {'placeholder': "lastName"} }) }}
+                            <span class="error">{{ form_errors(schoolBoy.lastName) }}</span>
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        {{ form_widget(form.schoolBoy.firstName,{ 'attr': {'placeholder': "firstName"} }) }}
-                        <span class="error">{{ form_errors(form.schoolBoy.firstName) }}</span>
+                    <div class="row">
+                        <div class="col">
+                            {{ form_widget(schoolBoy.firstName,{ 'attr': {'placeholder': "firstName"} }) }}
+                            <span class="error">{{ form_errors(schoolBoy.firstName) }}</span>
+                        </div>
                     </div>
-                </div>
 
-                <div class="row">
-                    <div class="col">
-                        {{ form_label(form.schoolBoy.birthDate, null, {'label': 'birthDay'}) }}
-                        {{ form_widget(form.schoolBoy.birthDate) }}
+                    <div class="row">
+                        <div class="col">
+                            {{ form_label(schoolBoy.birthDate, null, {'label': 'birthDay'}) }}
+                            {{ form_widget(schoolBoy.birthDate) }}
+                        </div>
+                        <div class="col">
+                            {{ form_widget(schoolBoy.birthplace,{ 'attr': {'placeholder': "birthplace"} }) }}
+                        </div>
                     </div>
-                    <div class="col">
-                        {{ form_widget(form.schoolBoy.birthplace,{ 'attr': {'placeholder': "birthplace"} }) }}
-                    </div>
-                </div>
 
-                <div class="row">
-                    <div class="col">
-                        <div class="input-group mb-3 ">
-                            <div class="input-group-prepend classes_label_regist">
-                                {{ form_label(form.schoolBoy.classes, null, {
-                                    'label': 'classes',
-                                    'label_attr': {'id': 'input-group-text'}
-                                }) }}
+                    <div class="row">
+                        <div class="col">
+                            <div class="input-group mb-3 ">
+                                <div class="input-group-prepend classes_label_regist">
+                                    {{ form_label(schoolBoy.classes, null, {
+                                        'label': 'classes',
+                                        'label_attr': {'id': 'input-group-text'}
+                                    }) }}
+                                </div>
+                                {{ form_widget(schoolBoy.classes, {'attr': {'class': 'custom-select'}}) }}
                             </div>
-                            {{ form_widget(form.schoolBoy.classes, {'attr': {'class': 'custom-select'}}) }}
                         </div>
                     </div>
-                    <div class="col matter_regist">
-                        {{ form_label(form.matter,null, {'label':'matter'}) }}
-                        <div class="matter_input_regist">
-                            {{ form_widget(form.matter) }}
-                        </div>
-                    </div>
-                </div>
+
+
+                {% endfor %}
+
 
                 <h2>Informations sur les parents</h2>
                 <div class="row">
                     <div class="col">
-                        {{ form_widget(form.schoolBoy.father.lastName,{ 'attr': {'placeholder': "lastName of the father"} }) }}
-                        <span class="error">{{ form_errors(form.schoolBoy.father.lastName) }}</span>
+                        {{ form_widget(form.father.lastName,{ 'attr': {'placeholder': "lastName of the father"} }) }}
+                        <span class="error">{{ form_errors(form.father.lastName) }}</span>
                     </div>
                     <div class="col">
-                        {{ form_widget(form.schoolBoy.father.firstName,{ 'attr': {'placeholder': "firstName of the father"} }) }}
-                        <span class="error">{{ form_errors(form.schoolBoy.father.firstName) }}</span>
+                        {{ form_widget(form.father.firstName,{ 'attr': {'placeholder': "firstName of the father"} }) }}
+                        <span class="error">{{ form_errors(form.father.firstName) }}</span>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
-                        {{ form_widget(form.schoolBoy.father.phone,{ 'attr': {'placeholder': "phone"} }) }}
-                        <span class="error">{{ form_errors(form.schoolBoy.father.phone) }}</span>
+                        {{ form_widget(form.father.phone,{ 'attr': {'placeholder': "phone"} }) }}
+                        <span class="error">{{ form_errors(form.father.phone) }}</span>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
-                        {{ form_widget(form.schoolBoy.mother.lastName,{ 'attr': {'placeholder': "lastName of the mother"} }) }}
-                        <span class="error">{{ form_errors(form.schoolBoy.mother.lastName) }}</span>
+                        {{ form_widget(form.mother.lastName,{ 'attr': {'placeholder': "lastName of the mother"} }) }}
+                        <span class="error">{{ form_errors(form.mother.lastName) }}</span>
                     </div>
                     <div class="col">
-                        {{ form_widget(form.schoolBoy.mother.firstName,{ 'attr': {'placeholder': "firstName of the mother"} }) }}
-                        <span class="error">{{ form_errors(form.schoolBoy.mother.firstName) }}</span>
+                        {{ form_widget(form.mother.firstName,{ 'attr': {'placeholder': "firstName of the mother"} }) }}
+                        <span class="error">{{ form_errors(form.mother.firstName) }}</span>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
-                        {{ form_widget(form.schoolBoy.mother.phone,{ 'attr': {'placeholder': "phone"} }) }}
-                        <span class="error">{{ form_errors(form.schoolBoy.mother.phone) }}</span>
+                        {{ form_widget(form.mother.phone,{ 'attr': {'placeholder': "phone"} }) }}
+                        <span class="error">{{ form_errors(form.mother.phone) }}</span>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
-                        {{ form_widget(form.schoolBoy.father.email,{ 'attr': {'placeholder': "email"} }) }}
-                        <span class="error">{{ form_errors(form.schoolBoy.father.email) }}</span>
+                        {{ form_widget(form.father.email,{ 'attr': {'placeholder': "email"} }) }}
+                        <span class="error">{{ form_errors(form.father.email) }}</span>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
-                        {{ form_widget(form.schoolBoy.father.address.address1,{ 'attr': {'placeholder': "address1"} }) }}
-                        <span class="error">{{ form_errors(form.schoolBoy.father.address.address1) }}</span>
+                        {{ form_widget(form.father.address.address1,{ 'attr': {'placeholder': "address1"} }) }}
+                        <span class="error">{{ form_errors(form.father.address.address1) }}</span>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
-                        {{ form_widget(form.schoolBoy.father.address.address2,{ 'attr': {'placeholder': "address 2"} }) }}
-                        <span class="error">{{ form_errors(form.schoolBoy.father.address.address2) }}</span>
+                        {{ form_widget(form.father.address.address2,{ 'attr': {'placeholder': "address 2"} }) }}
+                        <span class="error">{{ form_errors(form.father.address.address2) }}</span>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
-                        {{ form_widget(form.schoolBoy.father.address.postalCode,{ 'attr': {'placeholder': "posteCode"} }) }}
-                        <span class="error">{{ form_errors(form.schoolBoy.father.address.postalCode) }}</span>
+                        {{ form_widget(form.father.address.postalCode,{ 'attr': {'placeholder': "posteCode"} }) }}
+                        <span class="error">{{ form_errors(form.father.address.postalCode) }}</span>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
-                        {{ form_widget(form.schoolBoy.father.address.city,{ 'attr': {'placeholder': "city"} }) }}
-                        <span class="error">{{ form_errors(form.schoolBoy.father.address.city) }}</span>
+                        {{ form_widget(form.father.address.city,{ 'attr': {'placeholder': "city"} }) }}
+                        <span class="error">{{ form_errors(form.father.address.city) }}</span>
                     </div>
                 </div>
+
+                 {#this field is not displayed her but in the price grid#}
+                <div class="col matter_regist">
+                    {{ form_label(form.matters,null, {'label':'matter'}) }}
+                    <div class="matter_input_regist">
+                        {{ form_widget(form.matters) }}
+                        <span class="error">{{ form_errors(form.matters) }}</span>
+                    </div>
+                </div>
+
+                {{ render(path('matter_price_grid')) }}
 
                 <button type="submit" class="btn btn-primary btn-lg btn-block">S'inscrire</button>
                 {{ form_end(form) }}

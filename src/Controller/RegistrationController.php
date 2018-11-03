@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Matter;
 use App\Entity\Registration;
 use App\Entity\SchoolBoy;
 use Doctrine\ORM\EntityManagerInterface;
@@ -33,8 +34,16 @@ class RegistrationController extends AbstractController
      */
     public function index(Request $request)
     {
+        $matters = $this->getDoctrine()->getManager()->getRepository(Matter::class)->findAll();
+
+        $registration = new Registration();
+        $registration->addSchoolBoy(new SchoolBoy());
+//        foreach ($matters as $matter) {
+//            $registration->addMatter($matter);
+//        }
+
         $request->setLocale('fr');
-        $form = $this->createForm(RegistrationType::class, new Registration());
+        $form = $this->createForm(RegistrationType::class, $registration);
 
         $form->handleRequest($request);
 
@@ -48,6 +57,8 @@ class RegistrationController extends AbstractController
             $this->entityManager->flush();
 
             return $this->redirectToRoute('registration');
+        } else {
+            dump($form->getErrors(true));
         }
 
         return $this->render('registration/index.html.twig', [

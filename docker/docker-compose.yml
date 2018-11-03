@@ -12,7 +12,7 @@ services:
     image: nginx
     container_name: nginx
     ports:
-    - "8080:80"
+    - "8000:80"
     volumes:
     - $PWD:/code
     - $PWD/docker/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf
@@ -21,3 +21,7 @@ services:
     container_name: db
     environment:
       MYSQL_ROOT_PASSWORD: guest
+  adminer:
+    image: adminer
+    ports:
+    - "8080:8080"

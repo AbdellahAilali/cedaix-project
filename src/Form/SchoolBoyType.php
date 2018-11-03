@@ -39,12 +39,7 @@ class SchoolBoyType extends AbstractType
                 'class' => Classes::class,
                 'choice_label' => 'name',
                 'attr' => ['id' => 'inputGroupSelect01'],
-            ])
-            ->add('father', FatherType::class, [
-                'label' => 'Informations sur les parents',
-            ])
-            ->add('mother', MotherType::class)
-            ->addEventListener(FormEvents::POST_SUBMIT, [$this, 'onPostSubmit']);
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
@@ -52,19 +47,5 @@ class SchoolBoyType extends AbstractType
         $resolver->setDefaults(array(
             'data_class' => SchoolBoy::class,
         ));
-    }
-
-    public function onPostSubmit(FormEvent $event)
-    {
-        /** @var SchoolBoy $schoolBoy */
-        $schoolBoy = $event->getData();
-
-        if ($schoolBoy->getFather()->getAddress()) {
-            $schoolBoy->getMother()->setAddress($schoolBoy->getFather()->getAddress());
-        }
-
-        if ($schoolBoy->getFather()->getEmail()) {
-            $schoolBoy->getMother()->setEmail($schoolBoy->getFather()->getEmail());
-        }
     }
 }

@@ -8,7 +8,6 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Ramsey\Uuid\UuidInterface;
 
-
 /**
  * @ORM\Entity(repositoryClass="App\Repository\RegistrationRepository")
  */
@@ -22,12 +21,29 @@ class Registration
     private $id;
 
     /**
+     * @var Collection
+     *
      * @Assert\Valid
      *
-     * @ORM\ManyToOne(targetEntity="App\Entity\SchoolBoy", inversedBy="registrations", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="App\Entity\SchoolBoy", cascade={"persist"})
+     */
+    private $schoolBoys;
+
+    /**
+     * @Assert\Valid()
+     *
+     * @ORM\ManyToOne(targetEntity="App\Entity\Parents", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
-    private $schoolBoy;
+    private $father;
+
+    /**
+     * @Assert\Valid()
+     *
+     * @ORM\ManyToOne(targetEntity="App\Entity\Parents", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $mother;
 
     /**
      * @ORM\Column(type="date")
@@ -36,31 +52,21 @@ class Registration
     private $createdAt;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Matter", inversedBy="registrations")
+     * @Assert\Count(min=1)
+     * @ORM\ManyToMany(targetEntity="App\Entity\Matter")
      */
-    private $matter;
+    private $matters;
 
     public function __construct()
     {
-        $this->matter = new ArrayCollection();
+        $this->schoolBoys = new ArrayCollection();
+        $this->matters = new ArrayCollection();
         $this->createdAt = new \DateTime();
     }
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getSchoolBoy(): ?SchoolBoy
-    {
-        return $this->schoolBoy;
-    }
-
-    public function setSchoolBoy(?SchoolBoy $schoolBoy): self
-    {
-        $this->schoolBoy = $schoolBoy;
-
-        return $this;
     }
 
     public function getCreatedAt(): ?\DateTimeInterface
@@ -76,17 +82,43 @@ class Registration
     }
 
     /**
+     * @return Collection|SchoolBoy[]
+     */
+    public function getSchoolBoys(): ?   Collection
+    {
+        return $this->schoolBoys;
+    }
+
+    public function addSchoolBoy(SchoolBoy $schoolBoy): self
+    {
+        if (!$this->schoolBoys->contains($schoolBoy)) {
+            $this->schoolBoys[] = $schoolBoy;
+        }
+
+        return $this;
+    }
+
+    public function removeSchoolBoy(SchoolBoy $schoolBoy): self
+    {
+        if ($this->schoolBoys->contains($schoolBoy)) {
+            $this->schoolBoys->removeElement($schoolBoy);
+        }
+
+        return $this;
+    }
+    
+    /**
      * @return Collection|Matter[]
      */
-    public function getMatter(): Collection
+    public function getMatters(): Collection
     {
-        return $this->matter;
+        return $this->matters;
     }
 
     public function addMatter(Matter $matter): self
     {
-        if (!$this->matter->contains($matter)) {
-            $this->matter[] = $matter;
+        if (!$this->matters->contains($matter)) {
+            $this->matters[] = $matter;
         }
 
         return $this;
@@ -94,9 +126,49 @@ class Registration
 
     public function removeMatter(Matter $matter): self
     {
-        if ($this->matter->contains($matter)) {
-            $this->matter->removeElement($matter);
+        if ($this->matters->contains($matter)) {
+            $this->matters->removeElement($matter);
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Parents|null
+     */
+    public function getFather(): ?Parents
+    {
+        return $this->father;
+    }
+
+    /**
+     * @param Parents $father
+     *
+     * @return Registration
+     */
+    public function setFather(Parents $father): self
+    {
+        $this->father = $father;
+
+        return $this;
+    }
+
+    /**
+     * @return Parents|null
+     */
+    public function getMother(): ?Parents
+    {
+        return $this->mother;
+    }
+
+    /**
+     * @param Parents $mother
+     *
+     * @return Registration
+     */
+    public function setMother(Parents $mother): self
+    {
+        $this->mother = $mother;
 
         return $this;
     }

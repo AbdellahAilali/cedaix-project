@@ -1,0 +1,25 @@
+<table class="table">
+    <tr>
+        <td>Choix</td>
+        <td>Mattier</td>
+        <td>Description</td>
+        <td>Prix</td>
+    </tr>
+
+    {{ dump(app.request) }}
+
+    {% if post.matters is defined %}
+        toto
+    {% endif %}
+
+    {% for matter in matters %}
+        <tr>
+            <td>
+                <input id="registration_matter_{{ matter.id }}" name="registration[matters][]" value="{{ matter.id }}" type="checkbox">
+            </td>
+            <td>{{ matter.name }}</td>
+            <td>{{ matter.description }}</td>
+            <td>{{ matter.price }} €</td>
+        </tr>
+    {% endfor %}
+</table>

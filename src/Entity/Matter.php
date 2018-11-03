@@ -27,9 +27,10 @@ class Matter
     private $name;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Registration", mappedBy="matter")
+     * @ORM\Column(type="text")
+     * @Assert\NotBlank()
      */
-    private $registrations;
+    private $description;
 
     /**
      * @ORM\Column(type="integer")
@@ -37,11 +38,6 @@ class Matter
      * @Assert\NotBlank()
      */
     private $price;
-
-    public function __construct()
-    {
-        $this->registrations = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
@@ -60,34 +56,6 @@ class Matter
         return $this;
     }
 
-    /**
-     * @return Collection|Registration[]
-     */
-    public function getRegistrations(): Collection
-    {
-        return $this->registrations;
-    }
-
-    public function addRegistration(Registration $registration): self
-    {
-        if (!$this->registrations->contains($registration)) {
-            $this->registrations[] = $registration;
-            $registration->addMatter($this);
-        }
-
-        return $this;
-    }
-
-    public function removeRegistration(Registration $registration): self
-    {
-        if ($this->registrations->contains($registration)) {
-            $this->registrations->removeElement($registration);
-            $registration->removeMatter($this);
-        }
-
-        return $this;
-    }
-
     public function getPrice(): ?int
     {
         return $this->price;
@@ -98,5 +66,26 @@ class Matter
         $this->price = $price;
 
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription(): string
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string $description
+     */
+    public function setDescription(string $description): void
+    {
+        $this->description = $description;
+    }
+
+    public function __toString()
+    {
+        return $this->getName();
     }
 }

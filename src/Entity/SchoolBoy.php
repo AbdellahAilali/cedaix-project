@@ -49,31 +49,11 @@ class SchoolBoy
     private $birthplace;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Registration", mappedBy="schoolBoy")
-     */
-    private $registrations;
-
-    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Classes", inversedBy="schoolBoys")
      * @ORM\JoinColumn(nullable=false)
      */
     private $classes;
 
-    /**
-     * @Assert\Valid()
-     *
-     * @ORM\ManyToOne(targetEntity="App\Entity\Parents", cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $father;
-
-    /**
-     * @Assert\Valid()
-     *
-     * @ORM\ManyToOne(targetEntity="App\Entity\Parents", cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $mother;
 
     public function __construct()
     {
@@ -121,37 +101,6 @@ class SchoolBoy
         return $this;
     }
 
-    /**
-     * @return Collection|Registration[]
-     */
-    public function getRegistrations(): Collection
-    {
-        return $this->registrations;
-    }
-
-    public function addRegistration(Registration $registration): self
-    {
-        if (!$this->registrations->contains($registration)) {
-            $this->registrations[] = $registration;
-            $registration->setSchoolBoy($this);
-        }
-
-        return $this;
-    }
-
-    public function removeRegistration(Registration $registration): self
-    {
-        if ($this->registrations->contains($registration)) {
-            $this->registrations->removeElement($registration);
-            // set the owning side to null (unless already changed)
-            if ($registration->getSchoolBoy() === $this) {
-                $registration->setSchoolBoy(null);
-            }
-        }
-
-        return $this;
-    }
-
     public function getClasses(): ?Classes
     {
         return $this->classes;
@@ -160,30 +109,6 @@ class SchoolBoy
     public function setClasses(?Classes $classes): self
     {
         $this->classes = $classes;
-
-        return $this;
-    }
-
-    public function getFather(): ?Parents
-    {
-        return $this->father;
-    }
-
-    public function setFather($father): self
-    {
-        $this->father = $father;
-
-        return $this;
-    }
-
-    public function getMother(): ?Parents
-    {
-        return $this->mother;
-    }
-
-    public function setMother($mother): self
-    {
-        $this->mother = $mother;
 
         return $this;
     }
