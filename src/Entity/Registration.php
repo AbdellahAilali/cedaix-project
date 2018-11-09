@@ -52,7 +52,7 @@ class Registration
     private $createdAt;
 
     /**
-     * @Assert\Count(min=1)
+     * @Assert\Count(min=1, minMessage="Veuillez choisir au moins une matière")
      * @ORM\ManyToMany(targetEntity="App\Entity\Matter")
      */
     private $matters;

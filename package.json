@@ -2,7 +2,7 @@
     "devDependencies": {
         "@symfony/webpack-encore": "^0.20.0",
         "gsap": "^2.0.2",
-        "node-sass": "^4.9.4",
+        "node-sass": "^4.10.0",
         "popper": "^1.0.1",
         "sass-loader": "^7.1.0",
         "scrollmagic": "^2.0.6",
@@ -25,6 +25,7 @@
         "greensock": "^1.20.2",
         "imports-loader": "^0.8.0",
         "jquery": "^3.3.1",
+        "jquery-validation": "^1.18.0",
         "owl.carousel2": "^2.2.1",
         "popper.js": "^1.14.4"
     }

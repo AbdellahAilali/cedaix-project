@@ -1,5 +1,21 @@
 {% extends 'base.html.twig' %}
 
+{% form_theme form _self %}
+
+{% block form_row %}
+    <div class="form-group row">
+        {{ form_label(form) }}
+
+        <div class="col-sm-10">
+            {{ form_widget(form) }}
+            <span class="error">
+                {{ form_errors(form) }}
+            </span>
+        </div>
+    </div>
+{% endblock form_row %}
+
+
 {% block title %}Inscription{% endblock %}
 
 {% block stylesheets %}
@@ -9,141 +25,40 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('styles/registration.css') }}">
 {% endblock %}
 
-
 {% block body %}
-    <div class="super_container">
-        <div id="background-regist">
-            {% include 'registration/background.html.twig' %}
-        </div>
-        <div id="background_form">
-            <div id="img_form"  style="background-image:url(images/search_background.jpg);">
+    <div id="registration-page">
+        <div>{% include 'registration/background.html.twig' %}</div>
 
+        {{ form_start(form, {'attr': {'id':'form-registration'}}) }}
+
+        <div id="wizard">
+            <div id="step-1" class="step">
+                {{ include('registration/schoolboys.html.twig') }}
+                <button type="button" class="btn btn-next">Next</button>
             </div>
-            <div class="form-group">
-                {{ form_start(form) }}
+            <div id="step-2" class="step">
+                {#{{ include('registration/parents.html.twig') }}#}
+                <button type="button" class="btn btn-next">Next</button>
+            </div>
+            <div id="step-3" class="step">
 
-                {% for schoolBoy in form.schoolBoys %}
-                    <div class="row">
-                        <div class="col">
-                            <h2 id="info_schoolBoy_regist">Information sur l'élève</h2>
-                            {{ form_widget(schoolBoy.lastName,{ 'attr': {'placeholder': "lastName"} }) }}
-                            <span class="error">{{ form_errors(schoolBoy.lastName) }}</span>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            {{ form_widget(schoolBoy.firstName,{ 'attr': {'placeholder': "firstName"} }) }}
-                            <span class="error">{{ form_errors(schoolBoy.firstName) }}</span>
-                        </div>
-                    </div>
+                {# this field is not displayed her but in the price grid #}
+                {#<div class="col matter_regist delete">#}
+                    {#{{ form_label(form.matters,null, {'label':'matter'}) }}#}
+                    {#<div class="matter_input_regist">#}
+                        {#{{ form_widget(form.matters) }}#}
+                    {#</div>#}
+                {#</div>#}
 
-                    <div class="row">
-                        <div class="col">
-                            {{ form_label(schoolBoy.birthDate, null, {'label': 'birthDay'}) }}
-                            {{ form_widget(schoolBoy.birthDate) }}
-                        </div>
-                        <div class="col">
-                            {{ form_widget(schoolBoy.birthplace,{ 'attr': {'placeholder': "birthplace"} }) }}
-                        </div>
-                    </div>
+                {#{{ include('matter/price_grid.html.twig', {'matters': matters}) }}#}
 
-                    <div class="row">
-                        <div class="col">
-                            <div class="input-group mb-3 ">
-                                <div class="input-group-prepend classes_label_regist">
-                                    {{ form_label(schoolBoy.classes, null, {
-                                        'label': 'classes',
-                                        'label_attr': {'id': 'input-group-text'}
-                                    }) }}
-                                </div>
-                                {{ form_widget(schoolBoy.classes, {'attr': {'class': 'custom-select'}}) }}
-                            </div>
-                        </div>
-                    </div>
-
-
-                {% endfor %}
-
-
-                <h2>Informations sur les parents</h2>
-                <div class="row">
-                    <div class="col">
-                        {{ form_widget(form.father.lastName,{ 'attr': {'placeholder': "lastName of the father"} }) }}
-                        <span class="error">{{ form_errors(form.father.lastName) }}</span>
-                    </div>
-                    <div class="col">
-                        {{ form_widget(form.father.firstName,{ 'attr': {'placeholder': "firstName of the father"} }) }}
-                        <span class="error">{{ form_errors(form.father.firstName) }}</span>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        {{ form_widget(form.father.phone,{ 'attr': {'placeholder': "phone"} }) }}
-                        <span class="error">{{ form_errors(form.father.phone) }}</span>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        {{ form_widget(form.mother.lastName,{ 'attr': {'placeholder': "lastName of the mother"} }) }}
-                        <span class="error">{{ form_errors(form.mother.lastName) }}</span>
-                    </div>
-                    <div class="col">
-                        {{ form_widget(form.mother.firstName,{ 'attr': {'placeholder': "firstName of the mother"} }) }}
-                        <span class="error">{{ form_errors(form.mother.firstName) }}</span>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        {{ form_widget(form.mother.phone,{ 'attr': {'placeholder': "phone"} }) }}
-                        <span class="error">{{ form_errors(form.mother.phone) }}</span>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        {{ form_widget(form.father.email,{ 'attr': {'placeholder': "email"} }) }}
-                        <span class="error">{{ form_errors(form.father.email) }}</span>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        {{ form_widget(form.father.address.address1,{ 'attr': {'placeholder': "address1"} }) }}
-                        <span class="error">{{ form_errors(form.father.address.address1) }}</span>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        {{ form_widget(form.father.address.address2,{ 'attr': {'placeholder': "address 2"} }) }}
-                        <span class="error">{{ form_errors(form.father.address.address2) }}</span>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        {{ form_widget(form.father.address.postalCode,{ 'attr': {'placeholder': "posteCode"} }) }}
-                        <span class="error">{{ form_errors(form.father.address.postalCode) }}</span>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        {{ form_widget(form.father.address.city,{ 'attr': {'placeholder': "city"} }) }}
-                        <span class="error">{{ form_errors(form.father.address.city) }}</span>
-                    </div>
-                </div>
-
-                 {#this field is not displayed her but in the price grid#}
-                <div class="col matter_regist">
-                    {{ form_label(form.matters,null, {'label':'matter'}) }}
-                    <div class="matter_input_regist">
-                        {{ form_widget(form.matters) }}
-                        <span class="error">{{ form_errors(form.matters) }}</span>
-                    </div>
-                </div>
-
-                {{ render(path('matter_price_grid')) }}
+                {#<span class="error">{{ form_errors(form.matters) }}</span>#}
 
                 <button type="submit" class="btn btn-primary btn-lg btn-block">S'inscrire</button>
-                {{ form_end(form) }}
             </div>
         </div>
-    </div>
 
+        {#{{ form_end(form) }}#}
+
+    </div>
 {% endblock %}

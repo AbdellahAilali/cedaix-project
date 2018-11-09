@@ -28,11 +28,11 @@ class RegistrationType extends AbstractType
                 'entry_type' => SchoolBoyType::class,
                 'allow_add' => true
             ])
-            ->add("matters", EntityType::class, [
-                'class' => Matter::class,
-                'expanded' => true,
-                'multiple' => true,
-            ])
+//            ->add("matters", EntityType::class, [
+//                'class' => Matter::class,
+//                'expanded' => true,
+//                'multiple' => true,
+//            ])
             ->add('father', FatherType::class, [
                 'label' => 'Informations sur les parents',
             ])
@@ -44,8 +44,7 @@ class RegistrationType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => Registration::class,
-            'attr' => array('novalidate' => 'novalidate')
+            'data_class' => Registration::class
         ));
     }
 

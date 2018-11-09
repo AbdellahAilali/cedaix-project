@@ -38,9 +38,6 @@ class RegistrationController extends AbstractController
 
         $registration = new Registration();
         $registration->addSchoolBoy(new SchoolBoy());
-//        foreach ($matters as $matter) {
-//            $registration->addMatter($matter);
-//        }
 
         $request->setLocale('fr');
         $form = $this->createForm(RegistrationType::class, $registration);
@@ -63,6 +60,7 @@ class RegistrationController extends AbstractController
 
         return $this->render('registration/index.html.twig', [
             'form' => $form->createView(),
+            'matters' => $matters,
         ]);
     }
 }

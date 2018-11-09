@@ -1,25 +1,39 @@
-<table class="table">
-    <tr>
-        <td>Choix</td>
-        <td>Mattier</td>
-        <td>Description</td>
-        <td>Prix</td>
-    </tr>
-
-    {{ dump(app.request) }}
-
-    {% if post.matters is defined %}
-        toto
-    {% endif %}
-
-    {% for matter in matters %}
+<div class="matter-price-grid">
+    <table class="table">
         <tr>
-            <td>
-                <input id="registration_matter_{{ matter.id }}" name="registration[matters][]" value="{{ matter.id }}" type="checkbox">
-            </td>
-            <td>{{ matter.name }}</td>
-            <td>{{ matter.description }}</td>
-            <td>{{ matter.price }} €</td>
+            <td>Choix</td>
+            <td>Mattier</td>
+            <td>Description</td>
+            <td>Prix</td>
         </tr>
-    {% endfor %}
-</table>
+
+        {% set selectedMatters = [] %}
+
+        {% if app.request.request.get('registration')['matters'] is defined %}
+            {% set selectedMatters  =  app.request.request.get('registration')['matters'] %}
+        {% endif %}
+
+        {% for matter in matters %}
+            <tr>
+                <td>
+                    <input
+                            id="registration_matter_{{ matter.id }}"
+                            name="registration[matters][]"
+                            value="{{ matter.id }}"
+                            type="checkbox"
+                            data-price="{{ matter.price }}"
+                            {% if matter.id in selectedMatters %} checked="checked" {% endif %}
+                    />
+                </td>
+                <td>{{ matter.name }}</td>
+                <td>{{ matter.description }}</td>
+                <td>{{ matter.price }} €</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <div id="total" class="container-fluid right">
+        Total à payer : <span>0</span> €
+    </div>
+</div>
+
