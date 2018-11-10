@@ -22,5 +22,6 @@ require('./../plugins/fontawesome-free-5.0.1/css/fontawesome-all.css');
 require('../css/main_styles.css');
 require('../css/responsive.css');
 require('jquery-validation');
+require('jquery-validation/dist/localization/messages_fr.min.js');
 
 registration();

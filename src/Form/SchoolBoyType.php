@@ -36,6 +36,7 @@ class SchoolBoyType extends AbstractType
             ->add('classes', EntityType::class, [
                 'class' => Classes::class,
                 'choice_label' => 'name',
+                'attr' => ['class' => 'custom-select']
             ]);
     }
 

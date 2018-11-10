@@ -1,11 +1,19 @@
-<div class="school_boy_collection" data-prototype="{{ form_widget(form.schoolBoys.vars.prototype)|e('html_attr') }}">
-    <h2>Information sur l'élève</h2>
+<h2 class="title">Information sur les élèves</h2>
 
-    {% for schoolBoy in form.schoolBoys %}
-        {{ form_row(schoolBoy.lastName) }}
-        {{ form_row(schoolBoy.firstName) }}
-        {{ form_row(schoolBoy.birthplace) }}
-        {{ form_row(schoolBoy.birthDate) }}
-        {{ form_row(schoolBoy.classes) }}
-    {% endfor %}
+<div class="school_boy_collection" data-prototype="{{ form_widget(form.schoolBoys.vars.prototype)|e('html_attr') }}">
+
+    <div class="school-boy">
+
+        <h3 class="title">Elève 1</h3>
+
+        {% for schoolBoy in form.schoolBoys %}
+            {{ form_row(schoolBoy.lastName) }}
+            {{ form_row(schoolBoy.firstName) }}
+            {{ form_row(schoolBoy.birthplace) }}
+            {{ form_row(schoolBoy.birthDate) }}
+            {{ form_row(schoolBoy.classes) }}
+        {% endfor %}
+    </div>
 </div>
+
+<button type="button" class="add_school_boy_link btn btn-outline-primary">Ajouter un élève</button>

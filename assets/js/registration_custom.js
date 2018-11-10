@@ -19,18 +19,15 @@ export default function() {
 
         var collectionHolder = $('.school_boy_collection');
 
-        // count the current form inputs we have (e.g. 2), use that as the new
-        // index when inserting a new item (e.g. 2)
-        collectionHolder.data('index', collectionHolder.find(':input[name*="lastName"]').length);
+        var buttonAddSchoolBoy = $('button.add_school_boy_link');
 
-        var buttonAddSchoolBoy = $('<button type="button" class="add_school_boy_link">Ajouter un élève</button>');
         var newLinkDiv = $('<div></div>').append(buttonAddSchoolBoy);
 
         collectionHolder.append(newLinkDiv);
 
         $('.school_boy_collection button.add_school_boy_link').on('click', function(e) {
             // get the new index
-            var index = collectionHolder.data('index');
+            var index = $('.school-boy').length;
 
             var newForm = collectionHolder.data('prototype');
             // You need this only if you didn't set 'label' => false in your tags field in TaskType
@@ -42,15 +39,43 @@ export default function() {
             // instead be a number based on how many items we have
             newForm = newForm.replace(/__name__/g, index);
 
-            // increase the index with one for the next item
-            collectionHolder.data('index', index + 1);
+            var buttonDeleteSchoolBoy = $('<button type="button" class="delete_school_boy_link btn btn-outline-primary">Enlever cet élève</button>');
+
+            buttonDeleteSchoolBoy.on('click', function(e) {
+                $(this).closest('.school-boy').remove();
+            });
 
             // Display the form in the page in an li, before the "Add a tag" link li
-            var newFormLi = $('<div></div>').append(newForm);
+            var schoolByTitle = $('<h3 class="title">Elève '+(++index)+'</h3>');
+
+            var newFormLi = $('<div class="school-boy"></div>')
+                .prepend(schoolByTitle)
+                .append(newForm)
+                .append(buttonDeleteSchoolBoy);
+
             newLinkDiv.before(newFormLi);
         });
 
-        let validator = $("#form-registration").validate();
+        $("#form-registration").validate({
+            errorClass: "form-control-feedback",
+            errorElement: "span",
+            highlight: function ( element, errorClass, validClass ) {
+                $(element)
+                    .addClass('form-control-danger')
+                    .removeClass('form-control-success')
+                    .parents('.form-group')
+                    .addClass('has-danger')
+                    .removeClass('has-success');
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                $( element )
+                    .removeClass('form-control-danger')
+                    .addClass('form-control-success')
+                    .parents( ".form-group" )
+                    .removeClass( "has-danger" )
+                    .addClass( "has-success" );
+            }
+        });
 
         $('#wizard .step').fadeOut('slow');
         $('#wizard .step:first').fadeIn();

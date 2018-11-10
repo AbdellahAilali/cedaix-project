@@ -28,11 +28,11 @@ class RegistrationType extends AbstractType
                 'entry_type' => SchoolBoyType::class,
                 'allow_add' => true
             ])
-//            ->add("matters", EntityType::class, [
-//                'class' => Matter::class,
-//                'expanded' => true,
-//                'multiple' => true,
-//            ])
+            ->add("matters", EntityType::class, [
+                'class' => Matter::class,
+                'expanded' => true,
+                'multiple' => true,
+            ])
             ->add('father', FatherType::class, [
                 'label' => 'Informations sur les parents',
             ])
