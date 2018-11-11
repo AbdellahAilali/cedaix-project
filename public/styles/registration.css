@@ -5,35 +5,35 @@
     margin-bottom: 100px;
 }
 
-.col input:last-of-type {
-    margin-bottom: 24px;
-}
+/*.col input:last-of-type {*/
+    /*margin-bottom: 24px;*/
+/*}*/
 
-button.btn.btn-primary.btn-lg.btn-block {
-    background-color: #2064a5;
-    font-size: 23px;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: #FFFFFF;
-    cursor: pointer;
-    border: none;
-}
+/*button.btn.btn-primary.btn-lg.btn-block {*/
+    /*background-color: #2064a5;*/
+    /*font-size: 23px;*/
+    /*font-weight: 700;*/
+    /*text-transform: uppercase;*/
+    /*color: #FFFFFF;*/
+    /*cursor: pointer;*/
+    /*border: none;*/
+/*}*/
 
-.date_regist label.required {
-    margin-left: 16px;
-}
+/*.date_regist label.required {*/
+    /*margin-left: 16px;*/
+/*}*/
 
-.matter_regist label {
-    margin-right: 8px;
-}
+/*.matter_regist label {*/
+    /*margin-right: 8px;*/
+/*}*/
 
-.classes_label_regist label#input-group-text {
-    margin-right: 13px;
-}
+/*.classes_label_regist label#input-group-text {*/
+    /*margin-right: 13px;*/
+/*}*/
 
-#info_schoolBoy_regist {
-    margin-top: 40px;
-}
+/*#info_schoolBoy_regist {*/
+    /*margin-top: 40px;*/
+/*}*/
 
 h2 {
     margin-bottom: 27px;

@@ -9,14 +9,7 @@ export default function() {
         return total;
     };
 
-    $(document).ready(function() {
-        $('.delete').remove();
-
-        $('.matter-price-grid input').change(function () {
-            let total = totalPrice();
-            $('#total span').text(total);
-        });
-
+    let handleSchoolBoyCollection = function() {
         var collectionHolder = $('.school_boy_collection');
 
         var buttonAddSchoolBoy = $('button.add_school_boy_link');
@@ -25,18 +18,11 @@ export default function() {
 
         collectionHolder.append(newLinkDiv);
 
-        $('.school_boy_collection button.add_school_boy_link').on('click', function(e) {
-            // get the new index
-            var index = $('.school-boy').length;
+        $('.add_school_boy_link').on('click', function(e) {
+
+            var index = $('.school-boy').length; // get the new index
 
             var newForm = collectionHolder.data('prototype');
-            // You need this only if you didn't set 'label' => false in your tags field in TaskType
-            // Replace '__name__label__' in the prototype's HTML to
-            // instead be a number based on how many items we have
-            // newForm = newForm.replace(/__name__label__/g, index);
-
-            // Replace '__name__' in the prototype's HTML to
-            // instead be a number based on how many items we have
             newForm = newForm.replace(/__name__/g, index);
 
             var buttonDeleteSchoolBoy = $('<button type="button" class="delete_school_boy_link btn btn-outline-primary">Enlever cet élève</button>');
@@ -45,7 +31,6 @@ export default function() {
                 $(this).closest('.school-boy').remove();
             });
 
-            // Display the form in the page in an li, before the "Add a tag" link li
             var schoolByTitle = $('<h3 class="title">Elève '+(++index)+'</h3>');
 
             var newFormLi = $('<div class="school-boy"></div>')
@@ -55,7 +40,10 @@ export default function() {
 
             newLinkDiv.before(newFormLi);
         });
+    };
 
+
+    let handleFormWizard = function(){
         $("#form-registration").validate({
             errorClass: "form-control-feedback",
             errorElement: "span",
@@ -77,17 +65,33 @@ export default function() {
             }
         });
 
-        $('#wizard .step').fadeOut('slow');
+        $('#wizard .step').fadeOut();
         $('#wizard .step:first').fadeIn();
 
-        $('#wizard .btn-next').on('click', function() {
-            let valid = $("#form-registration").valid();
+        $('#wizard .btn-prev').on('click', function() {
+            let step = $(this).closest('.step');
+            step.fadeOut();
+            step.prev().fadeIn();
+        });
 
-            if (valid) {
-                let parent = $(this).parent();
-                parent.fadeOut('slow');
-                parent.next().fadeIn('slow');
+        $('#wizard .btn-next').on('click', function() {
+            if ($("#form-registration").valid()) {
+                let step = $(this).closest('.step');
+                step.fadeOut();
+                step.next().fadeIn();
             }
         });
-    })
+    };
+
+    $(document).ready(function() {
+        $('.delete').remove();
+
+        $('.matter-price-grid input').change(function () {
+            let total = totalPrice();
+            $('#total span').text(total);
+        });
+
+        handleSchoolBoyCollection();
+        handleFormWizard();
+    });
 }

@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Form\DTO\CreateMatterDTO;
 use App\Entity\Matter;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\CallbackTransformer;
@@ -21,7 +22,7 @@ class MatterType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => Matter::class,
+            'data_class' => CreateMatterDTO::class,
         ));
     }
 }

@@ -2,11 +2,9 @@
 
 namespace App\Form;
 
-
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\FormBuilderInterface;
 
 class FatherType extends AbstractType
 {
@@ -14,9 +12,10 @@ class FatherType extends AbstractType
     {
         $builder
             ->add('email', TextType::class, [
-                'attr' => ['class' => 'form-control input_field'],
+                'label' => 'app.ui.email'
             ])
-            ->add('address', AddressType::class);
+            ->add('address', AddressType::class)
+        ;
     }
 
     public function getParent()

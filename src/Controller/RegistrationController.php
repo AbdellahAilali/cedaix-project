@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\Matter;
 use App\Entity\Registration;
 use App\Entity\SchoolBoy;
+use App\Form\DTO\CreateRegistrationDTO;
+use App\Form\DTO\CreateSchoolBoyDTO;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -36,8 +38,8 @@ class RegistrationController extends AbstractController
     {
         $matters = $this->getDoctrine()->getManager()->getRepository(Matter::class)->findAll();
 
-        $registration = new Registration();
-        $registration->addSchoolBoy(new SchoolBoy());
+        $registration = new CreateRegistrationDTO();
+        $registration->addSchoolBoy(new CreateSchoolBoyDTO());
 
         $request->setLocale('fr');
         $form = $this->createForm(RegistrationType::class, $registration);

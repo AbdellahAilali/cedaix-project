@@ -3,10 +3,8 @@
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-use Ramsey\Uuid\UuidInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\AddressRepository")
@@ -34,6 +32,7 @@ class Address
     /**
      * @ORM\Column(type="integer")
      * @Assert\NotBlank()
+     * @Assert\Length(min="5", max="5")
      */
     private $postalCode;
 
@@ -48,14 +47,8 @@ class Address
      */
     private $country;
 
-    /**
-     * @ORM\OneToMany(targetEntity="Parents", mappedBy="address")
-     */
-    private $parents;
-
     public function __construct()
     {
-        $this->parents = new ArrayCollection();
         $this->country = 'France';
     }
 
@@ -64,7 +57,7 @@ class Address
         return $this->id;
     }
 
-    public function getAddress1(): ?string
+    public function getAddress1(): string
     {
         return $this->address1;
     }
@@ -88,7 +81,7 @@ class Address
         return $this;
     }
 
-    public function getPostalCode(): ?int
+    public function getPostalCode(): int
     {
         return $this->postalCode;
     }
@@ -100,7 +93,7 @@ class Address
         return $this;
     }
 
-    public function getCity(): ?string
+    public function getCity(): string
     {
         return $this->city;
     }
@@ -112,7 +105,7 @@ class Address
         return $this;
     }
 
-    public function getCountry(): ?string
+    public function getCountry(): string
     {
         return $this->country;
     }
@@ -120,37 +113,6 @@ class Address
     public function setCountry(string $country): self
     {
         $this->country = $country;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Parents[]
-     */
-    public function getParents(): Collection
-    {
-        return $this->parents;
-    }
-
-    public function addParent(Parents $parent): self
-    {
-        if (!$this->parents->contains($parent)) {
-            $this->parents[] = $parent;
-            $parent->setAddress($this);
-        }
-
-        return $this;
-    }
-
-    public function removeParent(Parents $parent): self
-    {
-        if ($this->parents->contains($parent)) {
-            $this->parents->removeElement($parent);
-            // set the owning side to null (unless already changed)
-            if ($parent->getAddress() === $this) {
-                $parent->setAddress(null);
-            }
-        }
 
         return $this;
     }

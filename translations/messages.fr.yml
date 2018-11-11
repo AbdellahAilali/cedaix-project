@@ -1,19 +1,24 @@
-lastName : Nom de famille
-firstName : Prénom
-birthDay : Date de naissance
-birthplace : Lieu de naissance
-classes : Classe/Niveau
-matter : Matière
-lastName of the father : Nom du père (tuteur)
-firstName of the father : prénom du père (tuteur)
-lastName of the mother : Nom de la mère (tutrice)
-firstName of the mother : prénom de la mère (tutrice)
-email : Adresse mail
-phone : téléphone
-address1: Adresse 1
-address2: Adresse 2
-posteCode : Code postale
-city : Ville
-
-Invalid credentials. : Le mot de passe que vous avez entré était invalide!
-Please sign in : Veuillez vous connecter
+app:
+  ui:
+    lastName : Nom
+    firstName : Prénom
+    birthDate : Date de naissance
+    birthplace : Lieu de naissance
+    classes : Classe
+    matter : Matière
+    select_an_option: ---Selectionner une option
+    lastName of the father : Nom du père
+    firstName of the father : prénom du père
+    lastName of the mother : Nom de la mère
+    firstName of the mother : prénom de la mères
+    email : Email
+    phone : Téléphone
+    address1: Adresse 1
+    address2: Adresse 2
+    postalCode : Code postale
+    city : Ville
+    Invalid credentials. : Le mot de passe que vous avez entré était invalide !
+    Please sign in : Veuillez vous connecter
+    father_info: Père
+    mother_info: Mère
+    contact_info: Information de contact

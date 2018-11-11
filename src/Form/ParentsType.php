@@ -2,10 +2,13 @@
 
 namespace App\Form;
 
+use App\Form\DTO\CreateParentsDTO;
 use App\Entity\Parents;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -15,20 +18,21 @@ class ParentsType extends AbstractType
     {
         $builder
             ->add('lastName', TextType::class, [
-                'attr' => ['class' => 'form-control input_field'],
+                'label' => 'app.ui.lastName'
             ])
             ->add('firstName', TextType::class, [
-                'attr' => ['class' => 'form-control input_field'],
+                'label' => 'app.ui.firstName'
             ])
             ->add('phone', TextType::class, [
-                'attr' => ['class' => 'form-control input_field'],
-            ]);
+                'label' => 'app.ui.phone'
+            ])
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => Parents::class,
+            'data_class' => CreateParentsDTO::class,
         ));
     }
 }

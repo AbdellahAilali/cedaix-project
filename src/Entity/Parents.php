@@ -92,13 +92,14 @@ class Parents
         return $this;
     }
 
-    public function getAddress(): ?Address
+    public function getAddress(): Address
     {
         return $this->address;
     }
 
-    public function setAddress(?Address $address): self
+    public function setAddress(Address $address): self
     {
+
         $this->address = $address;
 
         return $this;

@@ -1,8 +1,15 @@
+<h2 class="title">Choix des matières</h2>
+
+<div>
+    <p>
+        Veuillez choisir les maitères auxquel vous souhaitez inscrire votre enfant.
+    </p>
+</div>
 <div class="matter-price-grid">
     <table class="table">
         <tr>
             <td>Choix</td>
-            <td>Mattier</td>
+            <td>Matière</td>
             <td>Description</td>
             <td>Prix</td>
         </tr>
@@ -32,8 +39,9 @@
         {% endfor %}
     </table>
 
-    <div id="total" class="container-fluid right">
-        Total à payer : <span>0</span> €
+    <div class="row justify-content-end">
+        <div id="total" class="btn btn-info">
+            Total à payer : <span>0</span> €
+        </div>
     </div>
 </div>
-
