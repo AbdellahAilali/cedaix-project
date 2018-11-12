@@ -65,8 +65,8 @@ export default function() {
             }
         });
 
-        $('#wizard .step').fadeOut();
-        $('#wizard .step:first').fadeIn();
+        $('#wizard .step').hide();
+        $('#wizard .step:first').show();
 
         $('#wizard .btn-prev').on('click', function() {
             let step = $(this).closest('.step');

@@ -10,27 +10,23 @@ use Symfony\Component\Validator\Constraints as Assert;
 class CreateRegistrationDTO
 {
     /**
-     * @var Collection
+     * @var CreateSchoolBoyDTO[]
      *
      * @Assert\Valid
-     *
-     * @ORM\ManyToMany(targetEntity="App\Entity\SchoolBoy", cascade={"persist"})
      */
     public $schoolBoys;
 
     /**
      * @Assert\Valid()
      *
-     * @ORM\ManyToOne(targetEntity="App\Entity\Parents", cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
+     * @var CreateParentsDTO
      */
     public $father;
 
     /**
      * @Assert\Valid()
      *
-     * @ORM\ManyToOne(targetEntity="App\Entity\Parents", cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
+     * @var CreateMotherDTO
      */
     public $mother;
 
@@ -42,7 +38,6 @@ class CreateRegistrationDTO
 
     /**
      * @Assert\Count(min=1, minMessage="Veuillez choisir au moins une matière")
-     * @ORM\ManyToMany(targetEntity="App\Entity\Matter")
      */
     public $matters;
 

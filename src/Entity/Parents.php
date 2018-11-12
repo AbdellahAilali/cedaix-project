@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 use Ramsey\Uuid\UuidInterface;
 
 /**
@@ -20,36 +19,39 @@ class Parents
 
     /**
      * @ORM\Column(type="string", length=28)
-     * @Assert\NotBlank()
      */
     private $lastName;
 
     /**
      * @ORM\Column(type="string", length=28)
-     * @Assert\NotBlank()
      */
     private $firstName;
 
     /**
      * @ORM\Column(type="string", length=28)
-     * @Assert\NotBlank()
      */
     private $phone;
 
     /**
      * @ORM\Column(type="string", length=56)
-     * @Assert\NotBlank()
      */
     private $email;
 
     /**
-     * @Assert\Valid()
-     *
      * @ORM\ManyToOne(targetEntity="App\Entity\Address", inversedBy="parents", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $address;
 
+
+    public function __construct(string $lastName, string $firstName, string $phone, string $email, Address $address)
+    {
+        $this->lastName = $lastName;
+        $this->firstName = $firstName;
+        $this->phone = $phone;
+        $this->email = $email;
+        $this->address = $address;
+    }
 
     public function getId(): ?int
     {
@@ -99,7 +101,6 @@ class Parents
 
     public function setAddress(Address $address): self
     {
-
         $this->address = $address;
 
         return $this;

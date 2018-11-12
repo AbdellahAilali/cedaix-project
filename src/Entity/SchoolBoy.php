@@ -5,7 +5,6 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 use Ramsey\Uuid\UuidInterface;
 
 /**
@@ -22,29 +21,21 @@ class SchoolBoy
 
     /**
      * @ORM\Column(type="string", length=28)
-     *
-     * @Assert\NotBlank()
      */
     private $lastName;
 
     /**
      * @ORM\Column(type="string", length=28)
-     *
-     * @Assert\NotBlank()
      */
     private $firstName;
 
     /**
      * @ORM\Column(type="date")
-     *
-     * @Assert\NotBlank()
      */
     private $birthDate;
 
     /**
      * @ORM\Column(type="string", length=28)
-     *
-     * @Assert\NotBlank()
      */
     private $birthplace;
 
@@ -54,9 +45,15 @@ class SchoolBoy
      */
     private $classes;
 
-
-    public function __construct()
+    public function __construct(string $lastName, string $firstName, \DateTime $birthDate, string $birthplace, Classes $classes)
     {
+        $this->lastName = $lastName;
+        $this->firstName = $firstName;
+        $this->birthDate = $birthDate;
+        $this->birthplace = $birthplace;
+
+        $this->classes = $classes;
+
         $this->registrations = new ArrayCollection();
     }
 

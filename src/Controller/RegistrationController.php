@@ -2,11 +2,15 @@
 
 namespace App\Controller;
 
+use App\Entity\Address;
 use App\Entity\Matter;
+use App\Entity\Parents;
 use App\Entity\Registration;
 use App\Entity\SchoolBoy;
 use App\Form\DTO\CreateRegistrationDTO;
 use App\Form\DTO\CreateSchoolBoyDTO;
+use App\Form\MotherType;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -48,8 +52,46 @@ class RegistrationController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            /** @var Registration $registration */
-            $registration = $form->getData();
+            /** @var CreateRegistrationDTO $registrationDTO */
+            $registrationDTO = $form->getData();
+
+            $address = new Address(
+                $registrationDTO->father->address->address1,
+                $registrationDTO->father->address->address2,
+                $registrationDTO->father->address->postalCode,
+                $registrationDTO->father->address->city,
+                $registrationDTO->father->address->country
+            );
+
+            $mother = new Parents(
+                $registrationDTO->mother->lastName,
+                $registrationDTO->mother->firstName,
+                $registrationDTO->father->phone,
+                $registrationDTO->father->email,
+                $address
+            );
+
+            $father = new Parents(
+                $registrationDTO->father->lastName,
+                $registrationDTO->father->firstName,
+                $registrationDTO->father->phone,
+                $registrationDTO->father->email,
+                $address
+            );
+
+            $schoolBoys = new ArrayCollection();
+            foreach ($registrationDTO->schoolBoys as $schoolBoy) {
+                $schoolBoys->add(
+                    new SchoolBoy(
+                        $schoolBoy->firstName,
+                        $schoolBoy->lastName,
+                        $schoolBoy->birthDate,
+                        $schoolBoy->birthplace,
+                        $schoolBoy->classes
+                    ));
+            }
+
+            $registration = new Registration($schoolBoys, $registrationDTO->matters, $father, $mother);
 
             $this->entityManager->persist($registration);
 

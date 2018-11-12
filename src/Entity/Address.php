@@ -4,7 +4,6 @@ namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\AddressRepository")
@@ -20,7 +19,6 @@ class Address
 
     /**
      * @ORM\Column(type="string", length=56)
-     * @Assert\NotBlank()
      */
     private $address1;
 
@@ -31,14 +29,11 @@ class Address
 
     /**
      * @ORM\Column(type="integer")
-     * @Assert\NotBlank()
-     * @Assert\Length(min="5", max="5")
      */
     private $postalCode;
 
     /**
      * @ORM\Column(type="string", length=28)
-     * @Assert\NotBlank()
      */
     private $city;
 
@@ -47,9 +42,17 @@ class Address
      */
     private $country;
 
-    public function __construct()
+    public function __construct(string $address1, ?string $address2, string $postalCode, string $city, ?string $country = null)
     {
-        $this->country = 'France';
+        $this->address1 = $address1;
+        $this->address2 = $address2;
+        $this->postalCode = $postalCode;
+        $this->city = $city;
+        $this->country = $country;
+
+        if (null === $country) {
+            $this->country = 'France';
+        }
     }
 
     public function getId(): ?int

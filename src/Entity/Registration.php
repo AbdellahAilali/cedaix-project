@@ -5,7 +5,6 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 use Ramsey\Uuid\UuidInterface;
 
 /**
@@ -23,23 +22,17 @@ class Registration
     /**
      * @var Collection
      *
-     * @Assert\Valid
-     *
      * @ORM\ManyToMany(targetEntity="App\Entity\SchoolBoy", cascade={"persist"})
      */
     private $schoolBoys;
 
     /**
-     * @Assert\Valid()
-     *
      * @ORM\ManyToOne(targetEntity="App\Entity\Parents", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $father;
 
     /**
-     * @Assert\Valid()
-     *
      * @ORM\ManyToOne(targetEntity="App\Entity\Parents", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
@@ -52,15 +45,16 @@ class Registration
     private $createdAt;
 
     /**
-     * @Assert\Count(min=1, minMessage="Veuillez choisir au moins une matière")
      * @ORM\ManyToMany(targetEntity="App\Entity\Matter")
      */
     private $matters;
 
-    public function __construct()
+    public function __construct(ArrayCollection $schoolBoys, ArrayCollection $matters, Parents $father, Parents $mother)
     {
-        $this->schoolBoys = new ArrayCollection();
-        $this->matters = new ArrayCollection();
+        $this->schoolBoys = $schoolBoys;
+        $this->matters = $matters;
+        $this->father = $father;
+        $this->mother = $mother;
         $this->createdAt = new \DateTime();
     }
 
@@ -72,13 +66,6 @@ class Registration
     public function getCreatedAt(): ?\DateTimeInterface
     {
         return $this->createdAt;
-    }
-
-    public function setCreatedAt(\DateTimeInterface $createdAt): self
-    {
-        $this->createdAt = $createdAt;
-
-        return $this;
     }
 
     /**

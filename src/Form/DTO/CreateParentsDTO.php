@@ -28,6 +28,8 @@ class CreateParentsDTO
 
     /**
      * @Assert\Valid()
+     *
+     * @var CreateAddressDTO
      */
     public $address;
 }
