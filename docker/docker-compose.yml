@@ -21,6 +21,8 @@ services:
     container_name: db
     environment:
       MYSQL_ROOT_PASSWORD: guest
+    volumes:
+    - $PWD/docker/db:/var/lib/mysql
   adminer:
     image: adminer
     ports:

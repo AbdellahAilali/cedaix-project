@@ -37,4 +37,9 @@ class CreateSchoolBoyDTO
      * @Assert\Image()
      */
     public $photo;
+
+    /**
+     * @Assert\File()
+     */
+    public $insurance;
 }

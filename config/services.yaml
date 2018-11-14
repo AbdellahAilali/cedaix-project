@@ -6,6 +6,7 @@
 parameters:
     locale: 'fr'
     photo_directory: '%kernel.project_dir%/public/uploads/photo'
+    insurance_directory: '%kernel.project_dir%/public/uploads/insurance'
 
 services:
     # default configuration for services in *this* file
@@ -28,9 +29,11 @@ services:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
 
-    App\Uploader\FileUploader:
+    App\Mapper\DTOToEntityRegistrationMapper:
         arguments:
+            - '@App\Uploader\FileUploader'
             - '%photo_directory%'
+            - '%insurance_directory%'
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

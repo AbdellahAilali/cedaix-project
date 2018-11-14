@@ -48,6 +48,10 @@ class SchoolBoyType extends AbstractType
                 'label' => 'app.ui.photo',
                 'required' => false
             ])
+            ->add('insurance', FileType::class, [
+                'label' => 'app.ui.school_insurance',
+                'required' => false
+            ])
         ;
     }
 

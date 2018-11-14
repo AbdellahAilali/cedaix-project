@@ -40,11 +40,18 @@ class SchoolBoy
     private $birthplace;
 
     /**
-     * @var string
+     * @var null|string
      *
      * @ORM\Column(type="string", nullable=true)
      */
     private $photo;
+
+    /**
+     * @var null|string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $insurance;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Classes", inversedBy="schoolBoys")
@@ -52,14 +59,22 @@ class SchoolBoy
      */
     private $classes;
 
-    public function __construct(string $lastName, string $firstName, \DateTime $birthDate, string $birthplace, Classes $classes, string $photo = null)
-    {
+    public function __construct(
+        string $lastName,
+        string $firstName,
+        \DateTime $birthDate,
+        string $birthplace,
+        Classes $classes,
+        string $photo = null,
+        string $insurance = null
+    ) {
         $this->lastName = $lastName;
         $this->firstName = $firstName;
         $this->birthDate = $birthDate;
         $this->birthplace = $birthplace;
         $this->classes = $classes;
         $this->photo = $photo;
+        $this->insurance = $insurance;
     }
 
     public function getId(): int
@@ -103,5 +118,10 @@ class SchoolBoy
     public function setPhotoFileName(string $fileName)
     {
         $this->photo = $fileName;
+    }
+
+    public function setInsuranceFileName(string $fileName)
+    {
+        $this->insurance = $fileName;
     }
 }

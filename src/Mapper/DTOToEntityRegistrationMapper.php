@@ -17,10 +17,20 @@ class DTOToEntityRegistrationMapper
      * @var FileUploader
      */
     private $fileUploader;
+    /**
+     * @var string
+     */
+    private $photoDir;
+    /**
+     * @var string
+     */
+    private $insuranceDir;
 
-    public function __construct(FileUploader $fileUploader)
+    public function __construct(FileUploader $fileUploader, string $photoDir, string $insuranceDir)
     {
         $this->fileUploader = $fileUploader;
+        $this->photoDir = $photoDir;
+        $this->insuranceDir = $insuranceDir;
     }
 
     /**
@@ -57,9 +67,14 @@ class DTOToEntityRegistrationMapper
         $schoolBoys = new ArrayCollection();
         foreach ($registrationDTO->schoolBoys as $schoolBoy) {
 
-            $fileName  = null;
+            $photoFileName  = null;
             if ($schoolBoy->photo instanceof UploadedFile) {
-                $fileName = $this->fileUploader->upload($schoolBoy->photo);
+                $photoFileName = $this->fileUploader->upload($schoolBoy->photo, $this->photoDir);
+            }
+
+            $insuranceFileName = null;
+            if ($schoolBoy->insurance instanceof UploadedFile) {
+                $insuranceFileName = $this->fileUploader->upload($schoolBoy->insurance, $this->insuranceDir);
             }
 
             $schoolBoys->add(
@@ -69,7 +84,8 @@ class DTOToEntityRegistrationMapper
                     $schoolBoy->birthDate,
                     $schoolBoy->birthplace,
                     $schoolBoy->classes,
-                    $fileName
+                    $photoFileName,
+                    $insuranceFileName
                 ));
         }
 
