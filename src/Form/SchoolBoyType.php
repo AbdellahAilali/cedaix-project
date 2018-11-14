@@ -7,6 +7,7 @@ use App\Form\DTO\CreateSchoolBoyDTO;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -42,7 +43,12 @@ class SchoolBoyType extends AbstractType
                 'placeholder' => 'app.ui.select_an_option',
                 'attr' => ['class' => 'custom-select'],
                 'label' => 'app.ui.classes'
-            ]);
+            ])
+            ->add('photo', FileType::class, [
+                'label' => 'app.ui.photo',
+                'required' => false
+            ])
+        ;
     }
 
     /**

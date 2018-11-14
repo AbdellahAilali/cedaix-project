@@ -42,9 +42,36 @@ export default function() {
         });
     };
 
-
     let handleFormWizard = function(){
+        $.validator.addMethod("phone", function(value, element, active) {
+            if (active) {
+                return /^[0-9]+$/.test(value);
+            }
+            return true;
+        }, "Vueillez entrer un numéro de téléphone valide.");
+
+        $.validator.addMethod("postalCode", function(value, element, active) {
+            if (active) {
+                return /^[0-9]{5}$/.test(value);
+            }
+            return true;
+        }, "Vueillez entrer un code postal valide.");
+
         $("#form-registration").validate({
+            rules: {
+                "registration[father][email]": {
+                    email: true
+                },
+                "registration[father][phone]": {
+                    phone: true
+                },
+                "registration[mother][phone]": {
+                    phone: true
+                },
+                "registration[father][address][postalCode]": {
+                    postalCode: true
+                }
+            },
             errorClass: "form-control-feedback",
             errorElement: "span",
             highlight: function ( element, errorClass, validClass ) {

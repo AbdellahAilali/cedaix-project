@@ -6,8 +6,16 @@
     <div class="form-group row">
         {{ form_label(form, null, {'label_attr': {'class': 'col-sm-2 col-form-label'}}) }}
 
+        {% set type = type|default('number') %}
+
+        {% if type == 'file' %}
+            {% set css_classes = {"class": "form-control-file"} %}
+        {% else %}
+            {% set css_classes = {"class": "form-control"} %}
+        {% endif %}
+
         <div class="col-sm-10">
-            {{ form_widget(form, {"attr": {"class": "form-control"}}) }}
+            {{ form_widget(form, {"attr": css_classes}) }}
             <div class="has-danger">
                 <div class="form-control-feedback">
                     {{ form_errors(form) }}
@@ -64,6 +72,13 @@
                 </div>
             </div>
             <div id="step-3" class="step">
+                {{ include('registration/contact.html.twig') }}
+                <div class="row justify-content-between">
+                    <button type="button" class="btn btn-outline-primary btn-prev btn-lg">Précedent</button>
+                    <button type="button" class="btn btn-outline-primary btn-next btn-lg">Suivant</button>
+                </div>
+            </div>
+            <div id="step-4" class="step">
                 {#this field is not displayed her but in the price grid#}
                 <div class="col matter_regist delete">
                     {{ form_label(form.matters,null, {'label':'matter'}) }}

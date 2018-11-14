@@ -11,7 +11,7 @@ RUN mkdir $HOME/bin && curl -SS https://getcomposer.org/installer | php -- --ins
 
 ENV PATH /home/$name/bin:$PATH
 
-RUN groupadd -r $USER && useradd --no-log-init -r -g $USER $USER
+RUN groupadd -r -g 1000 $USER && useradd -r -u 1000 -g $USER $USER
 
 USER $USER
 

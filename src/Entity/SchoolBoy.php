@@ -40,85 +40,68 @@ class SchoolBoy
     private $birthplace;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $photo;
+
+    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Classes", inversedBy="schoolBoys")
      * @ORM\JoinColumn(nullable=false)
      */
     private $classes;
 
-    public function __construct(string $lastName, string $firstName, \DateTime $birthDate, string $birthplace, Classes $classes)
+    public function __construct(string $lastName, string $firstName, \DateTime $birthDate, string $birthplace, Classes $classes, string $photo = null)
     {
         $this->lastName = $lastName;
         $this->firstName = $firstName;
         $this->birthDate = $birthDate;
         $this->birthplace = $birthplace;
-
         $this->classes = $classes;
-
-        $this->registrations = new ArrayCollection();
+        $this->photo = $photo;
     }
 
-    public function getId(): ?int
+    public function getId(): int
     {
         return $this->id;
     }
 
-    public function getLastName(): ?string
+    public function getLastName(): string
     {
         return $this->lastName;
     }
 
-    public function setLastName(string $lastName): self
-    {
-        $this->lastName = $lastName;
-
-        return $this;
-    }
-
-    public function getFirstName(): ?string
+    public function getFirstName(): string
     {
         return $this->firstName;
     }
 
-    public function setFirstName(string $firstName): self
-    {
-        $this->firstName = $firstName;
-
-        return $this;
-    }
-
-    public function getBirthDate(): ?\DateTimeInterface
+    public function getBirthDate(): \DateTimeInterface
     {
         return $this->birthDate;
     }
 
-    public function setBirthDate(?\DateTimeInterface $birthDate): self
-    {
-        $this->birthDate = $birthDate;
-
-        return $this;
-    }
-
-    public function getClasses(): ?Classes
+    public function getClasses(): Classes
     {
         return $this->classes;
     }
 
-    public function setClasses(?Classes $classes): self
-    {
-        $this->classes = $classes;
-
-        return $this;
-    }
-
-    public function getBirthplace(): ?string
+    public function getBirthplace(): string
     {
         return $this->birthplace;
     }
 
-    public function setBirthplace(string $birthplace): self
+    /**
+     * @return null|string
+     */
+    public function getPhoto(): ?string
     {
-        $this->birthplace = $birthplace;
+        return $this->photo;
+    }
 
-        return $this;
+    public function setPhotoFileName(string $fileName)
+    {
+        $this->photo = $fileName;
     }
 }

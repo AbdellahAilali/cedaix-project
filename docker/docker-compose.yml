@@ -4,7 +4,7 @@ services:
     build:
       context: ./php
       args:
-        USER: ${USER}
+        USER: 1000
     container_name: php
     volumes:
     - $PWD:/code

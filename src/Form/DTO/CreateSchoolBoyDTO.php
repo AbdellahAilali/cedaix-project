@@ -32,4 +32,9 @@ class CreateSchoolBoyDTO
     /**
      */
     public $classes;
+
+    /**
+     * @Assert\Image()
+     */
+    public $photo;
 }
