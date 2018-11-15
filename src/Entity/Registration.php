@@ -49,6 +49,11 @@ class Registration
      */
     private $matters;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Payment", mappedBy="registration", orphanRemoval=true)
+     */
+    private $payments;
+
     public function __construct(ArrayCollection $schoolBoys, ArrayCollection $matters, Parents $father, Parents $mother)
     {
         $this->schoolBoys = $schoolBoys;
@@ -56,6 +61,7 @@ class Registration
         $this->father = $father;
         $this->mother = $mother;
         $this->createdAt = new \DateTime();
+        $this->payments = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -129,18 +135,6 @@ class Registration
     }
 
     /**
-     * @param Parents $father
-     *
-     * @return Registration
-     */
-    public function setFather(Parents $father): self
-    {
-        $this->father = $father;
-
-        return $this;
-    }
-
-    /**
      * @return Parents|null
      */
     public function getMother(): ?Parents
@@ -149,13 +143,32 @@ class Registration
     }
 
     /**
-     * @param Parents $mother
-     *
-     * @return Registration
+     * @return Collection|Payment[]
      */
-    public function setMother(Parents $mother): self
+    public function getPayments(): Collection
     {
-        $this->mother = $mother;
+        return $this->payments;
+    }
+
+    public function addPayment(Payment $payment): self
+    {
+        if (!$this->payments->contains($payment)) {
+            $this->payments[] = $payment;
+            $payment->setRegistration($this);
+        }
+
+        return $this;
+    }
+
+    public function removePayment(Payment $payment): self
+    {
+        if ($this->payments->contains($payment)) {
+            $this->payments->removeElement($payment);
+            // set the owning side to null (unless already changed)
+            if ($payment->getRegistration() === $this) {
+                $payment->setRegistration(null);
+            }
+        }
 
         return $this;
     }
